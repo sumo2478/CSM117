@@ -20,6 +20,9 @@
 		A77B671019132F8C00362BEA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A77B66F819132F8C00362BEA /* UIKit.framework */; };
 		A77B671819132F8C00362BEA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A77B671619132F8C00362BEA /* InfoPlist.strings */; };
 		A77B671A19132F8C00362BEA /* ScheduleSharerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A77B671919132F8C00362BEA /* ScheduleSharerTests.m */; };
+		A77B672919141B0400362BEA /* AddScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A77B672819141B0400362BEA /* AddScheduleViewController.m */; };
+		A77B672B19141B3E00362BEA /* AddScheduleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A77B672A19141B3E00362BEA /* AddScheduleView.xib */; };
+		A77B672E19141D8600362BEA /* ConnectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A77B672D19141D8600362BEA /* ConnectionModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +53,11 @@
 		A77B671519132F8C00362BEA /* ScheduleSharerTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ScheduleSharerTests-Info.plist"; sourceTree = "<group>"; };
 		A77B671719132F8C00362BEA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A77B671919132F8C00362BEA /* ScheduleSharerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScheduleSharerTests.m; sourceTree = "<group>"; };
+		A77B672719141B0400362BEA /* AddScheduleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AddScheduleViewController.h; path = Controller/AddScheduleViewController.h; sourceTree = "<group>"; };
+		A77B672819141B0400362BEA /* AddScheduleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AddScheduleViewController.m; path = Controller/AddScheduleViewController.m; sourceTree = "<group>"; };
+		A77B672A19141B3E00362BEA /* AddScheduleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddScheduleView.xib; path = View/AddScheduleView.xib; sourceTree = "<group>"; };
+		A77B672C19141D8600362BEA /* ConnectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConnectionModel.h; path = Model/ConnectionModel.h; sourceTree = "<group>"; };
+		A77B672D19141D8600362BEA /* ConnectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConnectionModel.m; path = Model/ConnectionModel.m; sourceTree = "<group>"; };
 		B502BD9DF1914A309E934FDB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -157,6 +165,8 @@
 		A77B672319141A7A00362BEA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A77B672C19141D8600362BEA /* ConnectionModel.h */,
+				A77B672D19141D8600362BEA /* ConnectionModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -164,6 +174,7 @@
 		A77B672419141A8000362BEA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A77B672A19141B3E00362BEA /* AddScheduleView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -171,6 +182,8 @@
 		A77B672519141A9300362BEA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A77B672719141B0400362BEA /* AddScheduleViewController.h */,
+				A77B672819141B0400362BEA /* AddScheduleViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -261,6 +274,7 @@
 			files = (
 				A77B66FF19132F8C00362BEA /* InfoPlist.strings in Resources */,
 				A77B670719132F8C00362BEA /* Images.xcassets in Resources */,
+				A77B672B19141B3E00362BEA /* AddScheduleView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,7 +327,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A77B670519132F8C00362BEA /* AppDelegate.m in Sources */,
+				A77B672E19141D8600362BEA /* ConnectionModel.m in Sources */,
 				A77B670119132F8C00362BEA /* main.m in Sources */,
+				A77B672919141B0400362BEA /* AddScheduleViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

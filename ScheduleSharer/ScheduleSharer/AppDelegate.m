@@ -7,14 +7,19 @@
 //
 
 #import "AppDelegate.h"
+#import "AddScheduleViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    
+    // TODO: Change this to the actual starting view controller
+    AddScheduleViewController* addScheduleViewController = [[AddScheduleViewController alloc] initWithNibName:@"AddScheduleView" bundle:nil];
+    
+    self.window.rootViewController = addScheduleViewController;
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
