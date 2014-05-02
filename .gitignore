@@ -18,3 +18,5 @@ build/
 xcuserdata
 
 *.moved-aside
+
+*.xcworkspace/
