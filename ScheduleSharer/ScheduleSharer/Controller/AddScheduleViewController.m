@@ -7,12 +7,15 @@
 //
 
 #import "AddScheduleViewController.h"
+#import "ConnectionModel.h"
 
 @interface AddScheduleViewController ()
 
 @end
 
 @implementation AddScheduleViewController
+
+@synthesize codeTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,5 +37,15 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+-(IBAction) download:(id)sender
+{
+    [ConnectionModel retrieveScheduleWithCode:@"3321" completion:^(NSDictionary* results) {
+        NSDictionary* data = (NSDictionary*) results;
+        NSLog(@"%@", data);
+    }];
+
+}
+
 
 @end

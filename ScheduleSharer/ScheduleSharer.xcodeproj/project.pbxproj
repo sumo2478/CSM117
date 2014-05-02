@@ -23,6 +23,7 @@
 		A77B672919141B0400362BEA /* AddScheduleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A77B672819141B0400362BEA /* AddScheduleViewController.m */; };
 		A77B672B19141B3E00362BEA /* AddScheduleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A77B672A19141B3E00362BEA /* AddScheduleView.xib */; };
 		A77B672E19141D8600362BEA /* ConnectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A77B672D19141D8600362BEA /* ConnectionModel.m */; };
+		A77B673219143BAB00362BEA /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = A77B673119143BAB00362BEA /* Constants.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		A77B672A19141B3E00362BEA /* AddScheduleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddScheduleView.xib; path = View/AddScheduleView.xib; sourceTree = "<group>"; };
 		A77B672C19141D8600362BEA /* ConnectionModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConnectionModel.h; path = Model/ConnectionModel.h; sourceTree = "<group>"; };
 		A77B672D19141D8600362BEA /* ConnectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConnectionModel.m; path = Model/ConnectionModel.m; sourceTree = "<group>"; };
+		A77B673019143BAB00362BEA /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Utilities/Constants.h; sourceTree = "<group>"; };
+		A77B673119143BAB00362BEA /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = Utilities/Constants.m; sourceTree = "<group>"; };
 		B502BD9DF1914A309E934FDB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -121,6 +124,7 @@
 		A77B66FA19132F8C00362BEA /* ScheduleSharer */ = {
 			isa = PBXGroup;
 			children = (
+				A77B672F19143B8D00362BEA /* Utilities */,
 				A77B672619141A9800362BEA /* Images */,
 				A77B672519141A9300362BEA /* Controllers */,
 				A77B672419141A8000362BEA /* Views */,
@@ -193,6 +197,15 @@
 			children = (
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		A77B672F19143B8D00362BEA /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				A77B673019143BAB00362BEA /* Constants.h */,
+				A77B673119143BAB00362BEA /* Constants.m */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -326,6 +339,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A77B673219143BAB00362BEA /* Constants.m in Sources */,
 				A77B670519132F8C00362BEA /* AppDelegate.m in Sources */,
 				A77B672E19141D8600362BEA /* ConnectionModel.m in Sources */,
 				A77B670119132F8C00362BEA /* main.m in Sources */,

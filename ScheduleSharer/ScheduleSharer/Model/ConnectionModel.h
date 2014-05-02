@@ -10,4 +10,11 @@
 
 @interface ConnectionModel : NSObject
 
+/**
+ * Retrieves a schedule
+ * @param {NSString}    code: 6 character code for the schedule
+ * @param {block} completion: Function to be executed when the request is complete
+ */
++(void) retrieveScheduleWithCode: (NSString*) code completion:(void (^)(NSDictionary* results))completion;
+
 @end
