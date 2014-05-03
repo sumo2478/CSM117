@@ -9,4 +9,8 @@
 
 #import "Constants.h"
 
-NSString* const URL_BASE = @"http://www.raywenderlich.com/demos/weather_sample/weather.php";
+NSString* const URL_BASE         = @"http://www.raywenderlich.com/demos/weather_sample/";
+NSString* const URL_GET_SCHEDULE = @"weather.php";
+
+NSString* const MODEL_SCHEDULE   = @"Schedules";
+NSString* const MODEL_EVENT      = @"Events";

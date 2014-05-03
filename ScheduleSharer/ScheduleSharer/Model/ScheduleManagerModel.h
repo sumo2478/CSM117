@@ -10,4 +10,10 @@
 
 @interface ScheduleManagerModel : NSObject
 
+-(id) initWithObjectContext: (NSManagedObjectContext*) objectContext;
+
+@property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
+
+- (BOOL) addScheduleWithTitle: (NSString*) title Description: (NSString*) description Events: (NSArray*) events;
+
 @end

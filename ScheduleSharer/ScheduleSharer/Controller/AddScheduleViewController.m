@@ -7,7 +7,9 @@
 //
 
 #import "AddScheduleViewController.h"
+
 #import "ConnectionModel.h"
+#import "ScheduleManagerModel.h"
 
 @interface AddScheduleViewController ()
 
@@ -43,6 +45,10 @@
     [ConnectionModel retrieveScheduleWithCode:@"3321" completion:^(NSDictionary* results) {
         NSDictionary* data = (NSDictionary*) results;
         NSLog(@"%@", data);
+        
+        ScheduleManagerModel* manager = [[ScheduleManagerModel alloc] initWithObjectContext: self.managedObjectContext];
+        [manager addScheduleWithTitle:@"Chicken" Description:@"Archer" Events:nil];
+        
     }];
 
 }

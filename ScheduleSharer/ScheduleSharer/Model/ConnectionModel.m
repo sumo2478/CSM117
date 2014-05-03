@@ -33,7 +33,7 @@
     NSMutableDictionary* params = [NSMutableDictionary dictionary];
     [params setValue:@"json" forKey:@"format"];
     
-    [manager GET:@"weather.php" parameters:params
+    [manager GET:URL_GET_SCHEDULE parameters:params
                                    success:^(AFHTTPRequestOperation *operation, id responseObject)
     {
         completion((NSDictionary*) responseObject);

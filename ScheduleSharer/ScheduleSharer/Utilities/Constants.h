@@ -10,6 +10,12 @@
 #ifndef Schedule_constants_h
 #define Schedule_constants_h
 
-extern NSString* const URL_BASE;
+// URL constants
+extern NSString* const URL_BASE;          // URL base
+extern NSString* const URL_GET_SCHEDULE;  // URL to get schedule
+
+// Model constants
+extern NSString* const MODEL_SCHEDULE;    // Schedule model name
+extern NSString* const MODEL_EVENT;       // Event model name
 
 #endif
