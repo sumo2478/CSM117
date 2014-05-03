@@ -8,13 +8,12 @@
 //  View controller handles the downloading of a schedule to the phone
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
 
-@interface AddScheduleViewController : UIViewController
+@interface AddScheduleViewController : BaseViewController
 
 // Text field for schedule code input
 @property (nonatomic, strong) IBOutlet UITextField* codeTextField;
-
-
 
 // Downloads the schedule using the code given in the codeTextField
 -(IBAction)download:(id)sender;

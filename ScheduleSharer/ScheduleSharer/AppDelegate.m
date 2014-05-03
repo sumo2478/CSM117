@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "AddScheduleViewController.h"
+#import "Events.h"
+#import "Schedules.h"
 
 @implementation AppDelegate
 
@@ -20,20 +22,24 @@
 {
     // Data storage operations
     
+    /*
     // Grab pointer to managed object context
     NSManagedObjectContext *context = [self managedObjectContext];
     
     // Created new managed object
-    NSManagedObject* schedule = [NSEntityDescription insertNewObjectForEntityForName:@"Schedules" inManagedObjectContext:context];
-    [schedule setValue:@"CS 181 Sylabus" forKey:@"title"];
-    [schedule setValue:@"Schedule for the 2014 Winter quarter" forKey:@"desc"];
+    Schedules* schedule = [NSEntityDescription insertNewObjectForEntityForName:@"Schedules" inManagedObjectContext:context];
+    schedule.title = @"CS 181 Syllabus";
+    schedule.desc = @"Schedule for the 2014 Winter quarter";
     
-    NSManagedObject* event = [NSEntityDescription insertNewObjectForEntityForName:@"Events" inManagedObjectContext:context];
-    [event setValue:@"Midterm 1" forKey:@"title"];
-    [event setValue:@"First midterm" forKey:@"desc"];
-    [event setValue:@"UCLA" forKey:@"location"];
-    [event setValue:[NSDate date] forKey:@"start_time"];
-    [event setValue:schedule forKey:@"schedule"];
+    Events* event = [NSEntityDescription insertNewObjectForEntityForName:@"Events" inManagedObjectContext:context];
+    event.title = @"Midterm 1";
+    event.desc = @"First midterm";
+    event.location = @"UCLA";
+    event.start_time = [NSDate date];
+    event.schedule = schedule;
+    
+    [schedule addEventsObject:event];
+    
     
     NSError *error;
     if (![context save:&error]) {
@@ -46,15 +52,25 @@
     [fetchRequest setEntity:entity];
     
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-    for (NSManagedObject *info in fetchedObjects) {
-        NSLog(@"Title: %@", [info valueForKey:@"title"]);
-        NSLog(@"Desc: %@", [info valueForKey:@"desc"]);
+    for (Schedules *schedule in fetchedObjects) {
+        NSLog(@"Title: %@", schedule.title);
+        NSLog(@"Desc: %@", schedule.desc);
+        
+        NSSet* events = schedule.events;
+        for (Events* event in events) {
+            NSLog(@"Event title: %@", event.title);
+        }
+        
     }
+    */
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     // TODO: Change this to the actual starting view controller
     AddScheduleViewController* addScheduleViewController = [[AddScheduleViewController alloc] initWithNibName:@"AddScheduleView" bundle:nil];
+    
+    // Add the context manager to the view
+    addScheduleViewController.managedObjectContext = self.managedObjectContext;
     
     self.window.rootViewController = addScheduleViewController;
     

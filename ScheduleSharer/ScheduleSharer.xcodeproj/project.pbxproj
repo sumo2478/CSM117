@@ -27,8 +27,9 @@
 		A77B6735191468D500362BEA /* ScheduleManagerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A77B6734191468D500362BEA /* ScheduleManagerModel.m */; };
 		A77B673719146CDC00362BEA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A77B673619146CDC00362BEA /* CoreData.framework */; };
 		A77B673A19148D1800362BEA /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A77B673819148D1800362BEA /* DataModel.xcdatamodeld */; };
-		A7F42ED61914BF6E003E5908 /* Events.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F42ED51914BF6E003E5908 /* Events.m */; };
 		A7F42EDA1914C04C003E5908 /* Schedules.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F42ED91914C04C003E5908 /* Schedules.m */; };
+		A7F42EDD1914C268003E5908 /* Events.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F42EDC1914C268003E5908 /* Events.m */; };
+		A7F42EE019156AE4003E5908 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F42EDF19156AE4003E5908 /* BaseViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,10 +71,12 @@
 		A77B6734191468D500362BEA /* ScheduleManagerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleManagerModel.m; path = Model/ScheduleManagerModel.m; sourceTree = "<group>"; };
 		A77B673619146CDC00362BEA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A77B673919148D1800362BEA /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
-		A7F42ED41914BF6E003E5908 /* Events.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Events.h; path = Model/DataBase/Events.h; sourceTree = "<group>"; };
-		A7F42ED51914BF6E003E5908 /* Events.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Events.m; path = Model/DataBase/Events.m; sourceTree = "<group>"; };
 		A7F42ED81914C04C003E5908 /* Schedules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Schedules.h; path = Model/DataBase/Schedules.h; sourceTree = "<group>"; };
 		A7F42ED91914C04C003E5908 /* Schedules.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Schedules.m; path = Model/DataBase/Schedules.m; sourceTree = "<group>"; };
+		A7F42EDB1914C268003E5908 /* Events.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Events.h; path = Model/DataBase/Events.h; sourceTree = "<group>"; };
+		A7F42EDC1914C268003E5908 /* Events.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Events.m; path = Model/DataBase/Events.m; sourceTree = "<group>"; };
+		A7F42EDE19156AE4003E5908 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = Controller/BaseViewController.h; sourceTree = "<group>"; };
+		A7F42EDF19156AE4003E5908 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = Controller/BaseViewController.m; sourceTree = "<group>"; };
 		B502BD9DF1914A309E934FDB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -207,6 +210,8 @@
 			children = (
 				A77B672719141B0400362BEA /* AddScheduleViewController.h */,
 				A77B672819141B0400362BEA /* AddScheduleViewController.m */,
+				A7F42EDE19156AE4003E5908 /* BaseViewController.h */,
+				A7F42EDF19156AE4003E5908 /* BaseViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -230,8 +235,8 @@
 		A7F42ED71914BF89003E5908 /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
-				A7F42ED41914BF6E003E5908 /* Events.h */,
-				A7F42ED51914BF6E003E5908 /* Events.m */,
+				A7F42EDB1914C268003E5908 /* Events.h */,
+				A7F42EDC1914C268003E5908 /* Events.m */,
 				A7F42ED81914C04C003E5908 /* Schedules.h */,
 				A7F42ED91914C04C003E5908 /* Schedules.m */,
 			);
@@ -372,10 +377,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7F42ED61914BF6E003E5908 /* Events.m in Sources */,
 				A7F42EDA1914C04C003E5908 /* Schedules.m in Sources */,
+				A7F42EE019156AE4003E5908 /* BaseViewController.m in Sources */,
 				A77B6735191468D500362BEA /* ScheduleManagerModel.m in Sources */,
 				A77B673219143BAB00362BEA /* Constants.m in Sources */,
+				A7F42EDD1914C268003E5908 /* Events.m in Sources */,
 				A77B670519132F8C00362BEA /* AppDelegate.m in Sources */,
 				A77B673A19148D1800362BEA /* DataModel.xcdatamodeld in Sources */,
 				A77B672E19141D8600362BEA /* ConnectionModel.m in Sources */,

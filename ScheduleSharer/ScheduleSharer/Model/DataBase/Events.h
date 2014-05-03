@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class Schedules;
 
 @interface Events : NSManagedObject
 
@@ -17,6 +18,6 @@
 @property (nonatomic, retain) NSString * location;
 @property (nonatomic, retain) NSDate * start_time;
 @property (nonatomic, retain) NSString * title;
-@property (nonatomic, retain) NSManagedObject *schedule;
+@property (nonatomic, retain) Schedules *schedule;
 
 @end
