@@ -18,4 +18,20 @@ extern NSString* const URL_GET_SCHEDULE;  // URL to get schedule
 extern NSString* const MODEL_SCHEDULE;    // Schedule model name
 extern NSString* const MODEL_EVENT;       // Event model name
 
+// API constants
+extern NSString* const API_SERVER_DATE_FORMAT;
+
+// Itinerary constants
+extern NSString* const API_ITINERARY_TITLE_FIELD;
+extern NSString* const API_ITINERARY_DESCRIPTION_FIELD;
+extern NSString* const API_ITINERARY_CODE_FIELD;
+
+// Event constants
+extern NSString* const API_EVENT_TITLE_FIELD;
+extern NSString* const API_EVENT_LOCATION_FIELD;
+extern NSString* const API_EVENT_DESCRIPTION_FIELD;
+extern NSString* const API_EVENT_START_TIME_FIELD;
+extern NSString* const API_EVENT_END_TIME_FIELD;
+
+
 #endif

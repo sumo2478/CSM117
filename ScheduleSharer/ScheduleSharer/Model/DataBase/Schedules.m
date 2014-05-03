@@ -2,7 +2,7 @@
 //  Schedules.m
 //  ScheduleSharer
 //
-//  Created by Collin Yen on 5/2/14.
+//  Created by Collin Yen on 5/3/14.
 //  Copyright (c) 2014 Collin Yen. All rights reserved.
 //
 
@@ -12,7 +12,9 @@
 
 @implementation Schedules
 
+@dynamic code;
 @dynamic desc;
+@dynamic owner;
 @dynamic title;
 @dynamic events;
 

@@ -12,8 +12,15 @@
 
 -(id) initWithObjectContext: (NSManagedObjectContext*) objectContext;
 
-@property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
-
+/**
+ *  Adds a schedule to the local database
+ *
+ *  @param title       Title of the schedule
+ *  @param description Description of the schedule
+ *  @param events      Array of event dictionary objects for the events associated with the schedule
+ *
+ *  @return YES on success, NO on failure of saving schedule
+ */
 - (BOOL) addScheduleWithTitle: (NSString*) title Description: (NSString*) description Events: (NSArray*) events;
 
 @end
