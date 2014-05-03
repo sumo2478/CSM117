@@ -24,6 +24,11 @@
 		A77B672B19141B3E00362BEA /* AddScheduleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A77B672A19141B3E00362BEA /* AddScheduleView.xib */; };
 		A77B672E19141D8600362BEA /* ConnectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A77B672D19141D8600362BEA /* ConnectionModel.m */; };
 		A77B673219143BAB00362BEA /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = A77B673119143BAB00362BEA /* Constants.m */; };
+		A77B6735191468D500362BEA /* ScheduleManagerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A77B6734191468D500362BEA /* ScheduleManagerModel.m */; };
+		A77B673719146CDC00362BEA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A77B673619146CDC00362BEA /* CoreData.framework */; };
+		A77B673A19148D1800362BEA /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A77B673819148D1800362BEA /* DataModel.xcdatamodeld */; };
+		A7F42ED61914BF6E003E5908 /* Events.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F42ED51914BF6E003E5908 /* Events.m */; };
+		A7F42EDA1914C04C003E5908 /* Schedules.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F42ED91914C04C003E5908 /* Schedules.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +66,14 @@
 		A77B672D19141D8600362BEA /* ConnectionModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConnectionModel.m; path = Model/ConnectionModel.m; sourceTree = "<group>"; };
 		A77B673019143BAB00362BEA /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Utilities/Constants.h; sourceTree = "<group>"; };
 		A77B673119143BAB00362BEA /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Constants.m; path = Utilities/Constants.m; sourceTree = "<group>"; };
+		A77B6733191468D500362BEA /* ScheduleManagerModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleManagerModel.h; path = Model/ScheduleManagerModel.h; sourceTree = "<group>"; };
+		A77B6734191468D500362BEA /* ScheduleManagerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleManagerModel.m; path = Model/ScheduleManagerModel.m; sourceTree = "<group>"; };
+		A77B673619146CDC00362BEA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A77B673919148D1800362BEA /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		A7F42ED41914BF6E003E5908 /* Events.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Events.h; path = Model/DataBase/Events.h; sourceTree = "<group>"; };
+		A7F42ED51914BF6E003E5908 /* Events.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Events.m; path = Model/DataBase/Events.m; sourceTree = "<group>"; };
+		A7F42ED81914C04C003E5908 /* Schedules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Schedules.h; path = Model/DataBase/Schedules.h; sourceTree = "<group>"; };
+		A7F42ED91914C04C003E5908 /* Schedules.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Schedules.m; path = Model/DataBase/Schedules.m; sourceTree = "<group>"; };
 		B502BD9DF1914A309E934FDB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -69,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A77B673719146CDC00362BEA /* CoreData.framework in Frameworks */,
 				A77B66F719132F8C00362BEA /* CoreGraphics.framework in Frameworks */,
 				A77B66F919132F8C00362BEA /* UIKit.framework in Frameworks */,
 				A77B66F519132F8C00362BEA /* Foundation.framework in Frameworks */,
@@ -112,6 +126,7 @@
 		A77B66F319132F8C00362BEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A77B673619146CDC00362BEA /* CoreData.framework */,
 				A77B66F419132F8C00362BEA /* Foundation.framework */,
 				A77B66F619132F8C00362BEA /* CoreGraphics.framework */,
 				A77B66F819132F8C00362BEA /* UIKit.framework */,
@@ -169,8 +184,12 @@
 		A77B672319141A7A00362BEA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A7F42ED71914BF89003E5908 /* DataBase */,
 				A77B672C19141D8600362BEA /* ConnectionModel.h */,
 				A77B672D19141D8600362BEA /* ConnectionModel.m */,
+				A77B6733191468D500362BEA /* ScheduleManagerModel.h */,
+				A77B6734191468D500362BEA /* ScheduleManagerModel.m */,
+				A77B673819148D1800362BEA /* DataModel.xcdatamodeld */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -206,6 +225,17 @@
 				A77B673119143BAB00362BEA /* Constants.m */,
 			);
 			name = Utilities;
+			sourceTree = "<group>";
+		};
+		A7F42ED71914BF89003E5908 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				A7F42ED41914BF6E003E5908 /* Events.h */,
+				A7F42ED51914BF6E003E5908 /* Events.m */,
+				A7F42ED81914C04C003E5908 /* Schedules.h */,
+				A7F42ED91914C04C003E5908 /* Schedules.m */,
+			);
+			name = DataBase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,6 +287,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Collin Yen";
 				TargetAttributes = {
+					A77B66F019132F8C00362BEA = {
+						DevelopmentTeam = QW4YTV2H2T;
+					};
 					A77B670B19132F8C00362BEA = {
 						TestTargetID = A77B66F019132F8C00362BEA;
 					};
@@ -339,8 +372,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7F42ED61914BF6E003E5908 /* Events.m in Sources */,
+				A7F42EDA1914C04C003E5908 /* Schedules.m in Sources */,
+				A77B6735191468D500362BEA /* ScheduleManagerModel.m in Sources */,
 				A77B673219143BAB00362BEA /* Constants.m in Sources */,
 				A77B670519132F8C00362BEA /* AppDelegate.m in Sources */,
+				A77B673A19148D1800362BEA /* DataModel.xcdatamodeld in Sources */,
 				A77B672E19141D8600362BEA /* ConnectionModel.m in Sources */,
 				A77B670119132F8C00362BEA /* main.m in Sources */,
 				A77B672919141B0400362BEA /* AddScheduleViewController.m in Sources */,
@@ -461,6 +498,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ScheduleSharer/ScheduleSharer-Prefix.pch";
 				INFOPLIST_FILE = "ScheduleSharer/ScheduleSharer-Info.plist";
@@ -476,6 +514,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ScheduleSharer/ScheduleSharer-Prefix.pch";
 				INFOPLIST_FILE = "ScheduleSharer/ScheduleSharer-Info.plist";
@@ -556,6 +595,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A77B673819148D1800362BEA /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A77B673919148D1800362BEA /* DataModel.xcdatamodel */,
+			);
+			currentVersion = A77B673919148D1800362BEA /* DataModel.xcdatamodel */;
+			name = DataModel.xcdatamodeld;
+			path = Model/DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A77B66E919132F8C00362BEA /* Project object */;
 }

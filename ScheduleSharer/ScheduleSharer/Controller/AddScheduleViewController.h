@@ -14,6 +14,8 @@
 // Text field for schedule code input
 @property (nonatomic, strong) IBOutlet UITextField* codeTextField;
 
+
+
 // Downloads the schedule using the code given in the codeTextField
 -(IBAction)download:(id)sender;
 

@@ -11,21 +11,14 @@
 #import "AFNetworking.h"
 #import "Constants.h"
 
-@interface ConnectionModel()
-
-@property (copy) NSDictionary* results;
-
-@end
-
 @implementation ConnectionModel
 
-@synthesize results = results_;
 
 -(id) init {
     self = [super init];
     
     if (self) {
-        self.results = NULL;
+        
     }
     
     return self;
