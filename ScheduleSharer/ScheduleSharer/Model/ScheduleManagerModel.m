@@ -10,8 +10,9 @@
 
 #import "Constants.h"
 #import "Schedules.h"
-#import "Events.h"
+#import "Events+Management.h"
 #import "Schedules.h"
+#import "CalendarManagerModel.h"
 
 
 @interface ScheduleManagerModel()
@@ -34,8 +35,13 @@
     return self;
 }
 
-- (BOOL) addScheduleWithTitle: (NSString*) title Description: (NSString*) description Events: (NSArray*) events
+- (BOOL) addScheduleWithTitle: (NSString*) title Description: (NSString*) description Code: (NSString*) code Events: (NSArray*) events
 {
+    // First delete a schedule with the same code if it exists
+    if (![self deleteScheduleWithCode:code]) {
+        return NO;
+    }
+    
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
     
@@ -46,24 +52,19 @@
     schedule.title = title;
     schedule.desc  = description;
     schedule.owner = @"Collin Yen";
+    schedule.code  = code;
     
     // For each event in the event array
     for (NSDictionary* event in events) {
         
         // Create an event object and add it to the schedule
-        Events* event_object = [NSEntityDescription insertNewObjectForEntityForName:MODEL_EVENT inManagedObjectContext:context];
-        event_object.title = event[API_EVENT_TITLE_FIELD];
-        event_object.desc  = event[API_EVENT_DESCRIPTION_FIELD];
-        event_object.location = event[API_EVENT_LOCATION_FIELD];
+        NSString* e_title       = event[API_EVENT_TITLE_FIELD];
+        NSString* e_description = event[API_EVENT_DESCRIPTION_FIELD];
+        NSString* e_location = event[API_EVENT_LOCATION_FIELD];
+        NSString* e_start_time = event[API_EVENT_START_TIME_FIELD];
+        NSString* e_end_time = event[API_EVENT_END_TIME_FIELD];
         
-        // Convert start and end times to date format
-
-        [dateFormat setDateFormat:API_SERVER_DATE_FORMAT];
-        NSDate* start_time = [dateFormat dateFromString:event[API_EVENT_START_TIME_FIELD]];
-        NSDate* end_time   = [dateFormat dateFromString:event[API_EVENT_END_TIME_FIELD]];
-
-        event_object.start_time = start_time;
-        event_object.end_time = end_time;
+        Events* event_object = [Events eventWithTitle:e_title Location:e_location Description:e_description StartTime:e_start_time EndTime:e_end_time Context:context];
         
         // Add in the relationships
         event_object.schedule = schedule;
@@ -77,6 +78,40 @@
         NSLog(@"Error saving object: %@", [error localizedDescription]);
         return NO;
     }
+    
+    return YES;
+}
+
+-(BOOL) deleteScheduleWithCode: (NSString*) code
+{
+    NSManagedObjectContext* context = [self managedObjectContext];
+    NSEntityDescription* entity = [NSEntityDescription entityForName:MODEL_SCHEDULE inManagedObjectContext:context];
+    
+    NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:entity];
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"code == %@", code];
+    [fetchRequest setPredicate:predicate];
+    
+    NSError* error;
+    NSArray* schedules = [context executeFetchRequest:fetchRequest error:&error];
+  
+    for (Schedules* schedule in schedules) {
+        // Remove all calendar events if there are any
+        NSSet* events = schedule.events;
+        for (Events* event in events) {
+            if (event.identifier) {
+                [CalendarManagerModel deleteEventMatchingIdentifier:event.identifier];
+            }
+        }
+        
+        [context deleteObject:schedule];
+    }
+    
+    if (![context save:&error]) {
+        NSLog(@"Could not delete entity: %@", error);
+        return NO;
+    }
+    
     
     return YES;
 }

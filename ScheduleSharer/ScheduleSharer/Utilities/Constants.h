@@ -33,5 +33,11 @@ extern NSString* const API_EVENT_DESCRIPTION_FIELD;
 extern NSString* const API_EVENT_START_TIME_FIELD;
 extern NSString* const API_EVENT_END_TIME_FIELD;
 
+// Calendar constants
+extern NSString* const CALENDAR_IDENTIFIER; // Identifier for the calendar
+extern NSString* const CALENDAR_TITLE;      // Title for the calendar
+
+extern NSString* const TEST_CODE;
+
 
 #endif
