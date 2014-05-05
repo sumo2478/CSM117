@@ -19,6 +19,8 @@
 
 @property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
 
+- (Events*) saveEventWithData: (NSDictionary*) event Context: (NSManagedObjectContext*) context;
+
 @end
 
 @implementation ScheduleManagerModel
@@ -55,16 +57,9 @@
     schedule.code  = code;
     
     // For each event in the event array
-    for (NSDictionary* event in events) {
-        
-        // Create an event object and add it to the schedule
-        NSString* e_title       = event[API_EVENT_TITLE_FIELD];
-        NSString* e_description = event[API_EVENT_DESCRIPTION_FIELD];
-        NSString* e_location = event[API_EVENT_LOCATION_FIELD];
-        NSString* e_start_time = event[API_EVENT_START_TIME_FIELD];
-        NSString* e_end_time = event[API_EVENT_END_TIME_FIELD];
-        
-        Events* event_object = [Events eventWithTitle:e_title Location:e_location Description:e_description StartTime:e_start_time EndTime:e_end_time Context:context];
+    for (NSDictionary* event in events)
+    {
+        Events* event_object = [self saveEventWithData:event Context:context];
         
         // Add in the relationships
         event_object.schedule = schedule;
@@ -109,8 +104,6 @@
                         // TODO: Come up with something to do if can't delete event
                     }
                 }];
-                
-                
             }
         }
         
@@ -124,6 +117,27 @@
     
     
     return YES;
+}
+
+- (Events*) saveEventWithData:(NSDictionary *)event Context:(NSManagedObjectContext *)context
+{
+    // Create an event object and add it to the schedule
+    NSString* e_title       = event[API_EVENT_TITLE_FIELD];
+    NSString* e_description = event[API_EVENT_DESCRIPTION_FIELD];
+    NSString* e_location    = event[API_EVENT_LOCATION_FIELD];
+    NSString* e_start_time  = event[API_EVENT_START_TIME_FIELD];
+    NSString* e_end_time    = event[API_EVENT_END_TIME_FIELD];
+    
+    NSNumber* recurring = [NSNumber numberWithInt:[event[API_EVENT_RECURRING_FIELD] intValue]];
+    NSString* recurring_end = nil;
+    
+    if ([recurring intValue] > 0) {
+        recurring_end = event[API_EVENT_RECURRING_END_TIME_FIELD];
+    }
+
+    Events* event_object = [Events eventWithTitle:e_title Location:e_location Description:e_description StartTime:e_start_time EndTime:e_end_time Recurring:recurring RecurringEnd:recurring_end Context:context];
+    
+    return event_object;
 }
 
 @end
