@@ -47,11 +47,10 @@
 -(IBAction) download:(id)sender
 {
     [ConnectionModel retrieveScheduleWithCode:@"3321" completion:^(NSDictionary* results) {
-        NSDictionary* data = (NSDictionary*) results;
         
-        NSString* title = data[@"title"];
-        NSString* description = data[@"description"];
-        NSArray* events = data[@"events"];
+        NSString* title       = results[@"title"];
+        NSString* description = results[@"description"];
+        NSArray*  events      = results[@"events"];
         
         // If there was an error in the json output then display error
         if (!title || !description || !events)
@@ -64,13 +63,14 @@
             NSManagedObjectContext* context = [self managedObjectContext];
             ScheduleManagerModel* manager = [[ScheduleManagerModel alloc] initWithObjectContext: context];
             
-            // Display error message if unable to save schedule
+            // Save the schedule to the local database
             if (![manager addScheduleWithTitle:title Description:description Code:TEST_CODE Events:events])
             {
                 [self alertWithTitle:@"Error" Message:@"Unable to save schedule"];
             }
 
             
+            // TODO: Remove this is for testing
             NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
             NSEntityDescription *entity = [Schedules getScheduleDescriptionWithContext:context];
             [fetchRequest setEntity:entity];
@@ -104,10 +104,12 @@
                 NSArray *fetchedObjects = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
                 for (Schedules *schedule in fetchedObjects) {
                     
+                    // For each of the fetched schedules sync it with the user's calendar
                     if ([CalendarManagerModel syncScheduleWithCode:schedule.code Title:schedule.title Events:schedule.events Context:self.managedObjectContext])
                     {
                         NSLog(@"Successfully added schedule");
-                    }else
+                    }
+                    else
                     {
                         NSLog(@"Unable to save");
                     }
