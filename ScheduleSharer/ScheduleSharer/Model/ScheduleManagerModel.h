@@ -21,6 +21,15 @@
  *
  *  @return YES on success, NO on failure of saving schedule
  */
-- (BOOL) addScheduleWithTitle: (NSString*) title Description: (NSString*) description Events: (NSArray*) events;
+- (BOOL) addScheduleWithTitle: (NSString*) title Description: (NSString*) description Code: (NSString*) code Events: (NSArray*) events;
+
+/**
+ *  Deles a schedule from the local database with the given code
+ *
+ *  @param code Code of the schedule to be deleted
+ *
+ *  @return YES on success, NO on failure of deleting schedule
+ */
+-(BOOL) deleteScheduleWithCode: (NSString*) code;
 
 @end

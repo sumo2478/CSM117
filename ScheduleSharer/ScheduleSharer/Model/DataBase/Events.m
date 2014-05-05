@@ -2,7 +2,7 @@
 //  Events.m
 //  ScheduleSharer
 //
-//  Created by Collin Yen on 5/2/14.
+//  Created by Collin Yen on 5/3/14.
 //  Copyright (c) 2014 Collin Yen. All rights reserved.
 //
 
@@ -17,6 +17,7 @@
 @dynamic location;
 @dynamic start_time;
 @dynamic title;
+@dynamic identifier;
 @dynamic schedule;
 
 @end
