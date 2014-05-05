@@ -72,8 +72,7 @@
 
             
             NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-            NSEntityDescription *entity = [NSEntityDescription
-                                           entityForName:@"Schedules" inManagedObjectContext:context];
+            NSEntityDescription *entity = [Schedules getScheduleDescriptionWithContext:context];
             [fetchRequest setEntity:entity];
             
             NSError* error;
@@ -98,7 +97,7 @@
                 
                 // TODO: REMOVE THIS ONLY FOR TESTING //
                 NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-                NSEntityDescription *entity = [NSEntityDescription entityForName:@"Schedules" inManagedObjectContext:self.managedObjectContext];
+                NSEntityDescription *entity = [Schedules getScheduleDescriptionWithContext:self.managedObjectContext];
                 [fetchRequest setEntity:entity];
                 
                 // TODO CHANGE THIS TO CORRECT PREDICATE

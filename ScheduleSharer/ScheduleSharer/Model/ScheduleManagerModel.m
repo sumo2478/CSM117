@@ -100,7 +100,17 @@
         NSSet* events = schedule.events;
         for (Events* event in events) {
             if (event.identifier) {
-                [CalendarManagerModel deleteEventMatchingIdentifier:event.identifier];
+                [CalendarManagerModel requestAccess:^(BOOL granted, NSError *error) {
+                    if (granted) {
+                        [CalendarManagerModel deleteEventMatchingIdentifier:event.identifier];
+                    }
+                    else
+                    {
+                        // TODO: Come up with something to do if can't delete event
+                    }
+                }];
+                
+                
             }
         }
         

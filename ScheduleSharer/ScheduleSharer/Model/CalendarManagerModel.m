@@ -47,6 +47,7 @@ static EKEventStore* eventStore = nil;
     // If calendar doesn't exist create one
     if (!calendar)
     {
+        NSLog(@"Creating calendar....");
         calendar = [EKCalendar calendarForEntityType:EKEntityTypeEvent eventStore:eventStore];
         
         // Set the calendar properties
@@ -114,7 +115,7 @@ static EKEventStore* eventStore = nil;
             return NO;
         }
         
-        event_object.identifier = [event eventIdentifier];
+        event_object.identifier = [NSString stringWithFormat:@"%@",  [event eventIdentifier]];
         
         if (![context save:&error]) {
             NSLog(@"Error saving event identifier: %@", error);
@@ -127,8 +128,6 @@ static EKEventStore* eventStore = nil;
 
 + (BOOL) deleteEventsMatchingCode:(NSString *)code Calendar: (EKCalendar*) calendar
 {
-    NSLog(@"Begin deletion");
-    
     // Retrieve all events in the calendar
     NSArray* calendars = [NSArray arrayWithObject:calendar];
     NSPredicate* predicate = [eventStore predicateForEventsWithStartDate:[NSDate distantPast] endDate:[NSDate distantFuture] calendars:calendars];
@@ -137,11 +136,9 @@ static EKEventStore* eventStore = nil;
     NSError* error;
     
     for (EKEvent* event in events) {
-        NSLog(@"URL: %@", [event.URL absoluteString]);
         // If the code matches the event then delete the event
         if ([[event.URL absoluteString] isEqualToString:code])
         {
-            NSLog(@"Deleting event");
             if (![eventStore removeEvent:event span:EKSpanThisEvent commit:YES error:&error])
             {
                 NSLog(@"Unable to delete existing event: %@", error);
@@ -158,10 +155,18 @@ static EKEventStore* eventStore = nil;
     EKEvent* event = [eventStore eventWithIdentifier:identifier];
     NSError* error;
     
-    if (![eventStore removeEvent:event span:EKSpanThisEvent commit:YES error:&error])
-    {
-        NSLog(@"Error removing event: %@", error);
+    if (!event) {
+        NSLog(@"Event is nil");
     }
+    else
+    {
+        if (![eventStore removeEvent:event span:EKSpanThisEvent commit:YES error:&error])
+        {
+            NSLog(@"Error removing event: %@", error);
+        }
+    }
+    
+
     
 }
 

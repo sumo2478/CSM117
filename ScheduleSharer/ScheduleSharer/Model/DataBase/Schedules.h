@@ -18,6 +18,9 @@
 @property (nonatomic, retain) NSString * owner;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSSet *events;
+
++ (NSEntityDescription*) getScheduleDescriptionWithContext: (NSManagedObjectContext*) context;
+
 @end
 
 @interface Schedules (CoreDataGeneratedAccessors)
