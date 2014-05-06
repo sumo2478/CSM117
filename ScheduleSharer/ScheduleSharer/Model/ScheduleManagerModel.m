@@ -11,7 +11,7 @@
 #import "Constants.h"
 #import "Schedules.h"
 #import "Events+Management.h"
-#import "Schedules.h"
+#import "Schedules+Management.h"
 #import "CalendarManagerModel.h"
 
 
@@ -19,6 +19,7 @@
 
 @property (nonatomic,strong) NSManagedObjectContext* managedObjectContext;
 
+// Saves the event to core data
 - (Events*) saveEventWithData: (NSDictionary*) event Context: (NSManagedObjectContext*) context;
 
 @end
@@ -44,6 +45,8 @@
         return NO;
     }
     
+    // Initialize date formatter
+    // TODO: Change to the appropriate timezone
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
     
@@ -80,16 +83,16 @@
 -(BOOL) deleteScheduleWithCode: (NSString*) code
 {
     NSManagedObjectContext* context = [self managedObjectContext];
-    NSEntityDescription* entity = [NSEntityDescription entityForName:MODEL_SCHEDULE inManagedObjectContext:context];
+    NSEntityDescription* entity = [Schedules getScheduleDescriptionWithContext:context];
     
     NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
-    [fetchRequest setEntity:entity];
     NSPredicate* predicate = [NSPredicate predicateWithFormat:@"code == %@", code];
+    [fetchRequest setEntity:entity];
     [fetchRequest setPredicate:predicate];
     
     NSError* error;
     NSArray* schedules = [context executeFetchRequest:fetchRequest error:&error];
-  
+    
     for (Schedules* schedule in schedules) {
         // Remove all calendar events if there are any
         NSSet* events = schedule.events;
@@ -114,7 +117,6 @@
         NSLog(@"Could not delete entity: %@", error);
         return NO;
     }
-    
     
     return YES;
 }
