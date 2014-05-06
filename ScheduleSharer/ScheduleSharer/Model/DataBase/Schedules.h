@@ -2,7 +2,7 @@
 //  Schedules.h
 //  ScheduleSharer
 //
-//  Created by Collin Yen on 5/3/14.
+//  Created by Collin Yen on 5/5/14.
 //  Copyright (c) 2014 Collin Yen. All rights reserved.
 //
 
@@ -17,10 +17,8 @@
 @property (nonatomic, retain) NSString * desc;
 @property (nonatomic, retain) NSString * owner;
 @property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSNumber * is_synced;
 @property (nonatomic, retain) NSSet *events;
-
-+ (NSEntityDescription*) getScheduleDescriptionWithContext: (NSManagedObjectContext*) context;
-
 @end
 
 @interface Schedules (CoreDataGeneratedAccessors)

@@ -12,7 +12,7 @@
 
 @implementation Events (Management)
 
-+ (Events*) eventWithTitle: (NSString*) title Location: (NSString*) location Description: (NSString*) description StartTime: (NSString*) start_time EndTime: (NSString*) end_time Context: (NSManagedObjectContext*) context;
++ (Events*) eventWithTitle: (NSString*) title Location: (NSString*) location Description: (NSString*) description StartTime: (NSString*) start_time EndTime: (NSString*) end_time Recurring: (NSNumber*) recurring RecurringEnd: (NSString*) recurring_end Context: (NSManagedObjectContext*) context
 {
     Events* event = [NSEntityDescription insertNewObjectForEntityForName:MODEL_EVENT inManagedObjectContext:context];
     
@@ -22,12 +22,16 @@
     NSDate* start = [dateFormat dateFromString:start_time];
     NSDate* end   = [dateFormat dateFromString:end_time];
     
-    
     event.title      = title;
     event.desc       = description;
     event.location   = location;
     event.start_time = start;
     event.end_time   = end;
+    event.recurring  = recurring;
+    
+    if ([recurring intValue]) {
+        event.recurring_end_date = [dateFormat dateFromString:recurring_end];
+    }
     
     return event;
 }

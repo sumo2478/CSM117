@@ -26,8 +26,11 @@ NSString* const API_EVENT_LOCATION_FIELD          = @"location";
 NSString* const API_EVENT_DESCRIPTION_FIELD       = @"description";
 NSString* const API_EVENT_START_TIME_FIELD        = @"start_time";
 NSString* const API_EVENT_END_TIME_FIELD          = @"end_time";
+NSString* const API_EVENT_RECURRING_FIELD         = @"recurring";
+NSString* const API_EVENT_RECURRING_END_TIME_FIELD = @"recurring_end_time";
 
 NSString* const CALENDAR_IDENTIFIER = @"ScheduleSharerIdentifier";
 NSString* const CALENDAR_TITLE = @"Schedule Sharer";
+
 
 NSString* const TEST_CODE = @"33212";

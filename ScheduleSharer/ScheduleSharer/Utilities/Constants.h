@@ -21,23 +21,33 @@ extern NSString* const MODEL_EVENT;       // Event model name
 // API constants
 extern NSString* const API_SERVER_DATE_FORMAT;
 
-// Itinerary constants
+// Itinerary API constants
 extern NSString* const API_ITINERARY_TITLE_FIELD;
 extern NSString* const API_ITINERARY_DESCRIPTION_FIELD;
 extern NSString* const API_ITINERARY_CODE_FIELD;
 
-// Event constants
+// Event API constants
 extern NSString* const API_EVENT_TITLE_FIELD;
 extern NSString* const API_EVENT_LOCATION_FIELD;
 extern NSString* const API_EVENT_DESCRIPTION_FIELD;
 extern NSString* const API_EVENT_START_TIME_FIELD;
 extern NSString* const API_EVENT_END_TIME_FIELD;
+extern NSString* const API_EVENT_RECURRING_FIELD;
+extern NSString* const API_EVENT_RECURRING_END_TIME_FIELD;
 
 // Calendar constants
 extern NSString* const CALENDAR_IDENTIFIER; // Identifier for the calendar
 extern NSString* const CALENDAR_TITLE;      // Title for the calendar
 
 extern NSString* const TEST_CODE;
+
+enum {
+    RECURRANCE_NONE = 0,
+    RECURRANCE_DAILY = 1,
+    RECURRANCE_WEEKLY = 2,
+    RECURRANCE_MONTHLY = 3,
+    RECURRANCE_YEARLY = 4
+}RecurranceConstants;
 
 
 #endif
