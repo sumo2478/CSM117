@@ -11,9 +11,9 @@
 		A7678CE219159E8100A2D150 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7678CE119159E8100A2D150 /* EventKit.framework */; };
 		A7678CE519159F1600A2D150 /* CalendarManagerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A7678CE419159F1600A2D150 /* CalendarManagerModel.m */; };
 		A7678CE81915E89700A2D150 /* Events+Management.m in Sources */ = {isa = PBXBuildFile; fileRef = A7678CE71915E89700A2D150 /* Events+Management.m */; };
-		A7678CEE1916151200A2D150 /* Schedules.m in Sources */ = {isa = PBXBuildFile; fileRef = A7678CED1916151200A2D150 /* Schedules.m */; };
 		A7678CF4191850D900A2D150 /* Events.m in Sources */ = {isa = PBXBuildFile; fileRef = A7678CF3191850D900A2D150 /* Events.m */; };
 		A7678CF71918585700A2D150 /* Schedules+Management.m in Sources */ = {isa = PBXBuildFile; fileRef = A7678CF61918585700A2D150 /* Schedules+Management.m */; };
+		A7678CFA19185D9200A2D150 /* Schedules.m in Sources */ = {isa = PBXBuildFile; fileRef = A7678CF919185D9200A2D150 /* Schedules.m */; };
 		A77B66F519132F8C00362BEA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A77B66F419132F8C00362BEA /* Foundation.framework */; };
 		A77B66F719132F8C00362BEA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A77B66F619132F8C00362BEA /* CoreGraphics.framework */; };
 		A77B66F919132F8C00362BEA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A77B66F819132F8C00362BEA /* UIKit.framework */; };
@@ -53,12 +53,12 @@
 		A7678CE419159F1600A2D150 /* CalendarManagerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalendarManagerModel.m; path = Model/CalendarManagerModel.m; sourceTree = "<group>"; };
 		A7678CE61915E89700A2D150 /* Events+Management.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Events+Management.h"; path = "Model/DataBase/Events+Management.h"; sourceTree = "<group>"; };
 		A7678CE71915E89700A2D150 /* Events+Management.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Events+Management.m"; path = "Model/DataBase/Events+Management.m"; sourceTree = "<group>"; };
-		A7678CEC1916151200A2D150 /* Schedules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Schedules.h; path = Model/DataBase/Schedules.h; sourceTree = "<group>"; };
-		A7678CED1916151200A2D150 /* Schedules.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Schedules.m; path = Model/DataBase/Schedules.m; sourceTree = "<group>"; };
 		A7678CF2191850D900A2D150 /* Events.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Events.h; path = Model/DataBase/Events.h; sourceTree = "<group>"; };
 		A7678CF3191850D900A2D150 /* Events.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Events.m; path = Model/DataBase/Events.m; sourceTree = "<group>"; };
 		A7678CF51918585700A2D150 /* Schedules+Management.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Schedules+Management.h"; path = "Model/DataBase/Schedules+Management.h"; sourceTree = "<group>"; };
 		A7678CF61918585700A2D150 /* Schedules+Management.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Schedules+Management.m"; path = "Model/DataBase/Schedules+Management.m"; sourceTree = "<group>"; };
+		A7678CF819185D9200A2D150 /* Schedules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Schedules.h; path = Model/DataBase/Schedules.h; sourceTree = "<group>"; };
+		A7678CF919185D9200A2D150 /* Schedules.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Schedules.m; path = Model/DataBase/Schedules.m; sourceTree = "<group>"; };
 		A77B66F119132F8C00362BEA /* ScheduleSharer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScheduleSharer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A77B66F419132F8C00362BEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A77B66F619132F8C00362BEA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -250,8 +250,8 @@
 			isa = PBXGroup;
 			children = (
 				A77B673819148D1800362BEA /* DataModel.xcdatamodeld */,
-				A7678CEC1916151200A2D150 /* Schedules.h */,
-				A7678CED1916151200A2D150 /* Schedules.m */,
+				A7678CF819185D9200A2D150 /* Schedules.h */,
+				A7678CF919185D9200A2D150 /* Schedules.m */,
 				A7678CF51918585700A2D150 /* Schedules+Management.h */,
 				A7678CF61918585700A2D150 /* Schedules+Management.m */,
 				A7678CE61915E89700A2D150 /* Events+Management.h */,
@@ -399,6 +399,7 @@
 				A7678CF4191850D900A2D150 /* Events.m in Sources */,
 				A7F42EE019156AE4003E5908 /* BaseViewController.m in Sources */,
 				A77B6735191468D500362BEA /* ScheduleManagerModel.m in Sources */,
+				A7678CFA19185D9200A2D150 /* Schedules.m in Sources */,
 				A77B673219143BAB00362BEA /* Constants.m in Sources */,
 				A77B670519132F8C00362BEA /* AppDelegate.m in Sources */,
 				A77B673A19148D1800362BEA /* DataModel.xcdatamodeld in Sources */,
@@ -407,7 +408,6 @@
 				A7678CF71918585700A2D150 /* Schedules+Management.m in Sources */,
 				A77B670119132F8C00362BEA /* main.m in Sources */,
 				A77B672919141B0400362BEA /* AddScheduleViewController.m in Sources */,
-				A7678CEE1916151200A2D150 /* Schedules.m in Sources */,
 				A7678CE81915E89700A2D150 /* Events+Management.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

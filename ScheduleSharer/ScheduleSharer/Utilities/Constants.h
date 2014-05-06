@@ -35,21 +35,19 @@ extern NSString* const API_EVENT_END_TIME_FIELD;
 extern NSString* const API_EVENT_RECURRING_FIELD;
 extern NSString* const API_EVENT_RECURRING_END_TIME_FIELD;
 
-// Event Entity Recurring Constants
-extern int const RECURRING_NONE;
-extern int const RECURRING_DAILY;
-extern int const RECURRING_WEEKLY;
-extern int const RECURRING_MONTHLY;
-extern int const RECURRING_YEARLY;
-
 // Calendar constants
 extern NSString* const CALENDAR_IDENTIFIER; // Identifier for the calendar
 extern NSString* const CALENDAR_TITLE;      // Title for the calendar
 
-
-
-
 extern NSString* const TEST_CODE;
+
+enum {
+    RECURRANCE_NONE = 0,
+    RECURRANCE_DAILY = 1,
+    RECURRANCE_WEEKLY = 2,
+    RECURRANCE_MONTHLY = 3,
+    RECURRANCE_YEARLY = 4
+}RecurranceConstants;
 
 
 #endif

@@ -32,11 +32,5 @@ NSString* const API_EVENT_RECURRING_END_TIME_FIELD = @"recurring_end_time";
 NSString* const CALENDAR_IDENTIFIER = @"ScheduleSharerIdentifier";
 NSString* const CALENDAR_TITLE = @"Schedule Sharer";
 
-int const RECURRING_NONE    = 0;
-int const RECURRING_DAILY   = 1;
-int const RECURRING_WEEKLY  = 2;
-int const RECURRING_MONTHLY = 3;
-int const RECURRING_YEARLY  = 4;
-
 
 NSString* const TEST_CODE = @"33212";

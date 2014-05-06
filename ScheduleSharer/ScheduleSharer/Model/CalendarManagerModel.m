@@ -108,9 +108,35 @@ static EKEventStore* eventStore = nil;
         [event setNotes:event_object.desc];
         [event setURL:url];
         
+        
+        if ([event_object.recurring intValue]) {
+            EKRecurrenceEnd* recurrence_end = [EKRecurrenceEnd recurrenceEndWithEndDate:event_object.recurring_end_date];
+            EKRecurrenceRule* recurrence_rule = nil;
+            
+            switch ([event_object.recurring intValue]) {
+                case RECURRANCE_DAILY:
+                    recurrence_rule = [[EKRecurrenceRule alloc] initRecurrenceWithFrequency:EKRecurrenceFrequencyDaily interval:1 end:recurrence_end];
+                    break;
+                case RECURRANCE_WEEKLY:
+                    recurrence_rule = [[EKRecurrenceRule alloc] initRecurrenceWithFrequency:EKRecurrenceFrequencyWeekly interval:1 end:recurrence_end];
+                    break;
+                case RECURRANCE_MONTHLY:
+                    recurrence_rule = [[EKRecurrenceRule alloc] initRecurrenceWithFrequency:EKRecurrenceFrequencyMonthly interval:1 end:recurrence_end];
+                    break;
+                case RECURRANCE_YEARLY:
+                    recurrence_rule = [[EKRecurrenceRule alloc] initRecurrenceWithFrequency:EKRecurrenceFrequencyYearly interval:1 end:recurrence_end];
+                    break;
+                    
+                default:
+                    break;
+            }
+            
+            [event setRecurrenceRules:[NSArray arrayWithObject:recurrence_rule]];
+        }
+        
         // Save the event to the calendar
         NSError* error = nil;
-        if (![eventStore saveEvent:event span:EKSpanThisEvent commit:YES error:&error]) {
+        if (![eventStore saveEvent:event span:EKSpanFutureEvents commit:YES error:&error]) {
             NSLog(@"Unable to save event: %@", error);
             return NO;
         }
@@ -139,7 +165,7 @@ static EKEventStore* eventStore = nil;
         // If the code matches the event then delete the event
         if ([[event.URL absoluteString] isEqualToString:code])
         {
-            if (![eventStore removeEvent:event span:EKSpanThisEvent commit:YES error:&error])
+            if (![eventStore removeEvent:event span:EKSpanFutureEvents commit:YES error:&error])
             {
                 NSLog(@"Unable to delete existing event: %@", error);
                 return NO;
@@ -160,7 +186,7 @@ static EKEventStore* eventStore = nil;
     }
     else
     {
-        if (![eventStore removeEvent:event span:EKSpanThisEvent commit:YES error:&error])
+        if (![eventStore removeEvent:event span:EKSpanFutureEvents commit:YES error:&error])
         {
             NSLog(@"Error removing event: %@", error);
         }
