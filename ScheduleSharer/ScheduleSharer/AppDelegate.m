@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "AddScheduleViewController.h"
+#import "ScheduleCatalogViewController.h"
 #import "Events.h"
 #import "Schedules.h"
 
@@ -22,57 +23,18 @@
 {
     // Data storage operations
     
-    /*
-    // Grab pointer to managed object context
-    NSManagedObjectContext *context = [self managedObjectContext];
-    
-    // Created new managed object
-    Schedules* schedule = [NSEntityDescription insertNewObjectForEntityForName:@"Schedules" inManagedObjectContext:context];
-    schedule.title = @"CS 181 Syllabus";
-    schedule.desc = @"Schedule for the 2014 Winter quarter";
-    
-    Events* event = [NSEntityDescription insertNewObjectForEntityForName:@"Events" inManagedObjectContext:context];
-    event.title = @"Midterm 1";
-    event.desc = @"First midterm";
-    event.location = @"UCLA";
-    event.start_time = [NSDate date];
-    event.schedule = schedule;
-    
-    [schedule addEventsObject:event];
-    
-    
-    NSError *error;
-    if (![context save:&error]) {
-        NSLog(@"Whoops, couldn't save: %@", [error localizedDescription]);
-    }
-    
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription
-                                   entityForName:@"Schedules" inManagedObjectContext:context];
-    [fetchRequest setEntity:entity];
-    
-    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-    for (Schedules *schedule in fetchedObjects) {
-        NSLog(@"Title: %@", schedule.title);
-        NSLog(@"Desc: %@", schedule.desc);
-        
-        NSSet* events = schedule.events;
-        for (Events* event in events) {
-            NSLog(@"Event title: %@", event.title);
-        }
-        
-    }
-    */
-    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     // TODO: Change this to the actual starting view controller
-    AddScheduleViewController* addScheduleViewController = [[AddScheduleViewController alloc] initWithNibName:@"AddScheduleView" bundle:nil];
+//    AddScheduleViewController* addScheduleViewController = [[AddScheduleViewController alloc] initWithNibName:@"AddScheduleView" bundle:nil];
+//    
+//    // Add the context manager to the view
+//    addScheduleViewController.managedObjectContext = self.managedObjectContext;
     
-    // Add the context manager to the view
-    addScheduleViewController.managedObjectContext = self.managedObjectContext;
+    ScheduleCatalogViewController* scheduleCatalogViewController = [[ScheduleCatalogViewController alloc] initWithNibName:@"ScheduleCatalogViewController" bundle:nil];
     
-    self.window.rootViewController = addScheduleViewController;
+    UINavigationController *navController=[[UINavigationController alloc]initWithRootViewController:scheduleCatalogViewController];
+    self.window.rootViewController=navController;
     
     [self.window makeKeyAndVisible];
     return YES;
