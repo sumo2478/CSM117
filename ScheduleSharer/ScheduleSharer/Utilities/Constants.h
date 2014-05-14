@@ -25,6 +25,8 @@ extern NSString* const API_SERVER_DATE_FORMAT;
 extern NSString* const API_ITINERARY_TITLE_FIELD;
 extern NSString* const API_ITINERARY_DESCRIPTION_FIELD;
 extern NSString* const API_ITINERARY_CODE_FIELD;
+extern NSString* const API_ITINERARY_OWNER_FIELD;
+extern NSString* const API_ITINERARY_EVENTS_FIELD;
 
 // Event API constants
 extern NSString* const API_EVENT_TITLE_FIELD;

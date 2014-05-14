@@ -15,13 +15,16 @@
 /**
  *  Adds a schedule to the local database
  *
- *  @param title       Title of the schedule
- *  @param description Description of the schedule
- *  @param events      Array of event dictionary objects for the events associated with the schedule
+ *  @param data Dictionary object containing data for the scheulde
+ *  -- title       - Title of the schedule
+ *  -- description - Description of the schedule
+ *  -- code        - Code of the schedule
+ *  -- owner       - Creator of the schedule
+ *  -- events      - Array of events in the schedule
  *
  *  @return YES on success, NO on failure of saving schedule
  */
-- (BOOL) addScheduleWithTitle: (NSString*) title Description: (NSString*) description Code: (NSString*) code Events: (NSArray*) events;
+- (BOOL) addScheduleWithData: (NSDictionary*) data;
 
 /**
  *  Deles a schedule from the local database with the given code

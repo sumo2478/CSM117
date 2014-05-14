@@ -21,14 +21,14 @@
     [dateFormat setDateFormat:API_SERVER_DATE_FORMAT];
     NSDate* start = [dateFormat dateFromString:start_time];
     NSDate* end   = [dateFormat dateFromString:end_time];
-    
+
     event.title      = title;
     event.desc       = description;
     event.location   = location;
     event.start_time = start;
     event.end_time   = end;
     event.recurring  = recurring;
-    
+
     if ([recurring intValue]) {
         event.recurring_end_date = [dateFormat dateFromString:recurring_end];
     }

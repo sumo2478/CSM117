@@ -30,9 +30,13 @@
     AFHTTPRequestOperationManager* manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:url];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
-    [manager GET:URL_GET_SCHEDULE parameters:nil
+    NSDictionary* params = [NSDictionary dictionaryWithObject:code forKey:@"code"];
+    
+    
+    [manager GET:URL_GET_SCHEDULE parameters:params
                                    success:^(AFHTTPRequestOperation *operation, id responseObject)
     {
+        NSLog(@"Description: %@", responseObject);
         completion((NSDictionary*) responseObject);
     }
     failure:^(AFHTTPRequestOperation *operation, NSError *error) {
