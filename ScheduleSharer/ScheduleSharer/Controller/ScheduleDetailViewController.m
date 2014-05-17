@@ -14,7 +14,7 @@
 
 @implementation ScheduleDetailViewController
 
-@synthesize selectedSchedule, scheduleTime, scheduleTitle;
+@synthesize selectedSchedule, scheduleTime, scheduleTitle, mySchedule;
 
 
 
@@ -31,6 +31,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.title = @"Schedule Detail";
 }
 
 - (void)didReceiveMemoryWarning

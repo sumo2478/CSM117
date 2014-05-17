@@ -7,11 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
+#import "Constants.h"
+#import "CalendarManagerModel.h"
+#import "ConnectionModel.h"
+#import "ScheduleManagerModel.h"
+#import "Schedules+Management.h"
+#import "Events+Management.h"
 
-@interface ScheduleDetailViewController : UIViewController
+@interface ScheduleDetailViewController : BaseViewController
 
 @property (strong, nonatomic) NSString *selectedSchedule;
-@property (weak, nonatomic) IBOutlet UILabel *scheduleTitle;
-@property (weak, nonatomic) IBOutlet UILabel *scheduleTime;
-
+@property (strong, nonatomic) IBOutlet UILabel *scheduleTitle;
+@property (strong, nonatomic) IBOutlet UILabel *scheduleTime;
+@property (strong, nonatomic) Schedules *mySchedule;
 @end

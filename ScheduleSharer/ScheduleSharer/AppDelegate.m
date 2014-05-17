@@ -33,6 +33,8 @@
     
     ScheduleCatalogViewController* scheduleCatalogViewController = [[ScheduleCatalogViewController alloc] initWithNibName:@"ScheduleCatalogViewController" bundle:nil];
     
+    scheduleCatalogViewController.managedObjectContext = self.managedObjectContext;
+    
     UINavigationController *navController=[[UINavigationController alloc]initWithRootViewController:scheduleCatalogViewController];
     self.window.rootViewController=navController;
     

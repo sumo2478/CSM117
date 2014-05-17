@@ -8,8 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "ScheduleDetailViewController.h"
+#import "BaseViewController.h"
+#import "AddScheduleViewController.h"
 
-@interface ScheduleCatalogViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+#import "Constants.h"
+#import "CalendarManagerModel.h"
+#import "ConnectionModel.h"
+#import "ScheduleManagerModel.h"
+#import "Schedules+Management.h"
+#import "Events+Management.h"
+
+@interface ScheduleCatalogViewController : BaseViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) ScheduleDetailViewController *scheduleDetailVC;
 //- (IBAction)openScheduleDetail:(id)sender;

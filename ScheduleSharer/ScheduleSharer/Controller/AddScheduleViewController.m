@@ -54,7 +54,7 @@
     
     NSManagedObjectContext* context = [self managedObjectContext];
     ScheduleManagerModel* manager = [[ScheduleManagerModel alloc] initWithObjectContext:context];
-    [manager addScheduleWithTitle:@"Test" Description:@"" Code:TEST_CODE Events:events];
+    [manager addScheduleWithTitle:@"Test Schedule" Description:@"" Code:TEST_CODE Events:events];
     
     // TODO: Remove this is for testing
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
