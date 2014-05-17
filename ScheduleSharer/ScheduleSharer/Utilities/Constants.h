@@ -20,6 +20,7 @@ extern NSString* const MODEL_EVENT;       // Event model name
 
 // API constants
 extern NSString* const API_SERVER_DATE_FORMAT;
+extern NSString* const API_SERVER_RECURRING_FORMAT;
 
 // Itinerary API constants
 extern NSString* const API_ITINERARY_TITLE_FIELD;

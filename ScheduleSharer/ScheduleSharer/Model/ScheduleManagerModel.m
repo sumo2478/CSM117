@@ -183,7 +183,6 @@
     NSString* recurring_end = nil;
     
     if ([recurring intValue] > 0) {
-        NSLog(@"Greater than 0");
         recurring_end = validated[API_EVENT_RECURRING_END_TIME_FIELD];
     }
 

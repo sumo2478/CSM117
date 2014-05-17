@@ -30,6 +30,7 @@
     event.recurring  = recurring;
 
     if ([recurring intValue]) {
+        [dateFormat setDateFormat:API_SERVER_RECURRING_FORMAT];
         event.recurring_end_date = [dateFormat dateFromString:recurring_end];
     }
     

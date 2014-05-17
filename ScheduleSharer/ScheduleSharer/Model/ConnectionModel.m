@@ -31,12 +31,11 @@
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     
     NSDictionary* params = [NSDictionary dictionaryWithObject:code forKey:@"code"];
-    
+    NSLog(@"Code: %@", code);
     
     [manager GET:URL_GET_SCHEDULE parameters:params
                                    success:^(AFHTTPRequestOperation *operation, id responseObject)
     {
-        NSLog(@"Description: %@", responseObject);
         completion((NSDictionary*) responseObject);
     }
     failure:^(AFHTTPRequestOperation *operation, NSError *error) {

@@ -17,6 +17,8 @@
 
 @interface AddScheduleViewController ()
 
+- (BOOL) downloadSchedule: (NSString*) code;
+
 @end
 
 @implementation AddScheduleViewController
@@ -116,8 +118,57 @@
 //        }
 //    }];
     
-    [ConnectionModel retrieveScheduleWithCode:TEST_CODE completion:^(NSDictionary* results) {
+    
 
+}
+
+- (IBAction)scan:(id)sender
+{
+    // ADD: present a barcode reader that scans from the camera feed
+    ZBarReaderViewController *reader = [ZBarReaderViewController new];
+    reader.readerDelegate = self;
+    
+    ZBarImageScanner *scanner = reader.scanner;
+    
+    [scanner setSymbology: 0
+                   config: ZBAR_CFG_ENABLE
+                       to: 0];
+    [scanner setSymbology:ZBAR_QRCODE
+                   config:ZBAR_CFG_ENABLE
+                       to:1];
+
+    
+    [self presentViewController: reader animated: YES completion: nil];
+}
+
+# pragma mark ZBar Delegate
+- (void) imagePickerController: (UIImagePickerController*) reader
+ didFinishPickingMediaWithInfo: (NSDictionary*) info
+{
+    
+    // ADD: get the decode results
+    id<NSFastEnumeration> results = [info objectForKey: ZBarReaderControllerResults];
+    ZBarSymbol *symbol = nil;
+    for(symbol in results)
+        // EXAMPLE: just grab the first barcode
+        break;
+    
+    // ADD: dismiss the controller (NB dismiss from the *reader*!)
+    [reader dismissViewControllerAnimated:YES completion:nil];
+    
+    NSString* code = symbol.data;
+    [self downloadSchedule:code];
+    
+}
+
+#pragma mark Helper Functions
+
+- (BOOL) downloadSchedule: (NSString*) code
+{
+    BOOL result = YES;
+    
+    [ConnectionModel retrieveScheduleWithCode:code completion:^(NSDictionary* results) {
+        NSLog(@"Results: %@", results);
         NSManagedObjectContext* context = [self managedObjectContext];
         ScheduleManagerModel* manager = [[ScheduleManagerModel alloc] initWithObjectContext: context];
         
@@ -126,7 +177,7 @@
         {
             [self alertWithTitle:@"Error" Message:@"Unable to save schedule to phone"];
         }
-
+        
         
         // Sync database entry with calendar
         [CalendarManagerModel requestAccess:^(BOOL granted, NSError *error) {
@@ -159,18 +210,19 @@
                     
                 }
                 // END TODO
-
+                
             }else{
                 NSLog(@"Denied permission");
             }
         }];
         
-
+        
         
     }];
+    
+    [self alertWithTitle:@"Success" Message:@"Successfully downloaded schedule"];
 
-
+    
+    return result;
 }
-
-
 @end
