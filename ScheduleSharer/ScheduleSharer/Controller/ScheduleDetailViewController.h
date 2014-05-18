@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import "EventDetailViewController.h"
+
 #import "Constants.h"
 #import "CalendarManagerModel.h"
 #import "ConnectionModel.h"
@@ -17,8 +19,8 @@
 
 @interface ScheduleDetailViewController : BaseViewController
 
-@property (strong, nonatomic) NSString *selectedSchedule;
-@property (strong, nonatomic) IBOutlet UILabel *scheduleTitle;
-@property (strong, nonatomic) IBOutlet UILabel *scheduleTime;
+@property (strong, nonatomic) EventDetailViewController *eventDetailVC;
+
 @property (strong, nonatomic) Schedules *mySchedule;
+@property (strong, nonatomic) NSArray *myEvents;
 @end

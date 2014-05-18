@@ -53,14 +53,20 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
     }
-    /*
+    
     Schedules *schedule = [self.scheduleCatalogArray objectAtIndex:indexPath.row];
     
     
     [cell.textLabel setText:schedule.title];
-     */
-    [cell.textLabel setText:[self.scheduleCatalogArray objectAtIndex:indexPath.row]];
-    //[cell.detailTextLabel setText:@"publisher"];
+     
+    //[cell.textLabel setText:[self.scheduleCatalogArray objectAtIndex:indexPath.row]];
+    NSSet *events = schedule.events;
+    NSMutableString *eventsString = [NSMutableString stringWithString: @" "];
+    
+    for (Events* event in events) {
+        [eventsString appendString:event.title];
+    }
+    [cell.detailTextLabel setText:eventsString];
     
    /*
     UIButton *button = [UIButton buttonWithType:UIButtonTypeContactAdd];
@@ -105,10 +111,11 @@
     
     NSLog(@"select");
     
-    NSString *title = [self.scheduleCatalogArray objectAtIndex:indexPath.row];
-    scheduleDetailVC.scheduleTitle.text = title;
-    scheduleDetailVC.scheduleTime.text = scheduleCatalogDictionary[title];
+    //NSString *title = [self.scheduleCatalogArray objectAtIndex:indexPath.row];
+    //scheduleDetailVC.scheduleTitle.text = title;
+    //scheduleDetailVC.scheduleTime.text = scheduleCatalogDictionary[title];
     scheduleDetailVC.managedObjectContext = self.managedObjectContext;
+    scheduleDetailVC.mySchedule = [self.scheduleCatalogArray objectAtIndex:indexPath.row];
     
     
     [self.navigationController pushViewController:self.scheduleDetailVC animated:YES];
@@ -126,10 +133,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = @"catalog";
+    self.title = @"My Schedules";
     self.scheduleCatalogTableView.dataSource = self;
     self.scheduleCatalogTableView.delegate = self;
-    /*
+    
     NSManagedObjectContext* context = [self managedObjectContext];
     NSError* error;
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -137,8 +144,8 @@
     [fetchRequest setEntity:entity];
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
     scheduleCatalogArray = fetchedObjects;
-     */
-    
+     
+    /*
     scheduleCatalogArray = @[@"CS111",@"EE116L",@"STATS105",@"CS117"];
     scheduleCatalogDictionary  = @{
                         @"CS111": @"M W 2pm to 4pm",
@@ -146,7 +153,7 @@
                         @"STATS105": @"T TR 8am to 10am",
                         @"CS117": @"T TR 4pm to 6pm"
                         };
-    
+    */
     if (!scheduleDetailVC) {
         scheduleDetailVC = [[ScheduleDetailViewController alloc]initWithNibName:nil bundle:nil];
         

@@ -38,6 +38,8 @@
 		A7C3EB9519207FB0009D8044 /* ScheduleCatalogViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7C3EB9319207FB0009D8044 /* ScheduleCatalogViewController.xib */; };
 		A7C3EB9619207FB0009D8044 /* ScheduleDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A7C3EB9419207FB0009D8044 /* ScheduleDetailViewController.xib */; };
 		A7F42EE019156AE4003E5908 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F42EDF19156AE4003E5908 /* BaseViewController.m */; };
+		CEDEF7D11928244300019E93 /* EventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDEF7CF1928244300019E93 /* EventDetailViewController.m */; };
+		CEDEF7DD1928258200019E93 /* EventDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEDEF7DC1928258200019E93 /* EventDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +101,9 @@
 		A7F42EDE19156AE4003E5908 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = Controller/BaseViewController.h; sourceTree = "<group>"; };
 		A7F42EDF19156AE4003E5908 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = Controller/BaseViewController.m; sourceTree = "<group>"; };
 		B502BD9DF1914A309E934FDB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CEDEF7CE1928244300019E93 /* EventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventDetailViewController.h; path = Controller/EventDetailViewController.h; sourceTree = "<group>"; };
+		CEDEF7CF1928244300019E93 /* EventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventDetailViewController.m; path = Controller/EventDetailViewController.m; sourceTree = "<group>"; };
+		CEDEF7DC1928258200019E93 /* EventDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EventDetailViewController.xib; path = View/EventDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +231,7 @@
 			children = (
 				A7C3EB9319207FB0009D8044 /* ScheduleCatalogViewController.xib */,
 				A7C3EB9419207FB0009D8044 /* ScheduleDetailViewController.xib */,
+				CEDEF7DC1928258200019E93 /* EventDetailViewController.xib */,
 				A77B672A19141B3E00362BEA /* AddScheduleView.xib */,
 			);
 			name = Views;
@@ -238,6 +244,8 @@
 				A7C3EB8E19207F46009D8044 /* ScheduleCatalogViewController.m */,
 				A7C3EB8F19207F46009D8044 /* ScheduleDetailViewController.h */,
 				A7C3EB9019207F46009D8044 /* ScheduleDetailViewController.m */,
+				CEDEF7CE1928244300019E93 /* EventDetailViewController.h */,
+				CEDEF7CF1928244300019E93 /* EventDetailViewController.m */,
 				A77B672719141B0400362BEA /* AddScheduleViewController.h */,
 				A77B672819141B0400362BEA /* AddScheduleViewController.m */,
 				A7F42EDE19156AE4003E5908 /* BaseViewController.h */,
@@ -360,6 +368,7 @@
 			files = (
 				A77B66FF19132F8C00362BEA /* InfoPlist.strings in Resources */,
 				A7C3EB9619207FB0009D8044 /* ScheduleDetailViewController.xib in Resources */,
+				CEDEF7DD1928258200019E93 /* EventDetailViewController.xib in Resources */,
 				A77B670719132F8C00362BEA /* Images.xcassets in Resources */,
 				A77B672B19141B3E00362BEA /* AddScheduleView.xib in Resources */,
 				A7C3EB9519207FB0009D8044 /* ScheduleCatalogViewController.xib in Resources */,
@@ -424,6 +433,7 @@
 				A77B672E19141D8600362BEA /* ConnectionModel.m in Sources */,
 				A7678CE519159F1600A2D150 /* CalendarManagerModel.m in Sources */,
 				A7C3EB9219207F46009D8044 /* ScheduleDetailViewController.m in Sources */,
+				CEDEF7D11928244300019E93 /* EventDetailViewController.m in Sources */,
 				A7678CF71918585700A2D150 /* Schedules+Management.m in Sources */,
 				A77B670119132F8C00362BEA /* main.m in Sources */,
 				A77B672919141B0400362BEA /* AddScheduleViewController.m in Sources */,
