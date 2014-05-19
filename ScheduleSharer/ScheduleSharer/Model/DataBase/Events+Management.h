@@ -10,6 +10,7 @@
 
 @interface Events (Management)
 
+<<<<<<< HEAD
 /**
  *  Convience function to create an event Core Data Object
  *
@@ -25,5 +26,8 @@
  *  @return Event object with the above data
  */
 + (Events*) eventWithTitle: (NSString*) title Location: (NSString*) location Description: (NSString*) description StartTime: (NSString*) start_time EndTime: (NSString*) end_date Recurring: (NSNumber*) recurring RecurringEnd: (NSString*) reccuring_end Context: (NSManagedObjectContext*) context;
+=======
++ (Events*) eventWithTitle: (NSString*) title Location: (NSString*) location Description: (NSString*) description StartTime: (NSString*) start_time EndTime: (NSString*) end_date Context: (NSManagedObjectContext*) context;
+>>>>>>> origin/calendar
 
 @end

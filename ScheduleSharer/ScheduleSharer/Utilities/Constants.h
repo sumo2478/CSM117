@@ -52,5 +52,11 @@ enum {
     RECURRANCE_YEARLY = 4
 }RecurranceConstants;
 
+// Calendar constants
+extern NSString* const CALENDAR_IDENTIFIER; // Identifier for the calendar
+extern NSString* const CALENDAR_TITLE;      // Title for the calendar
+
+extern NSString* const TEST_CODE;
+
 
 #endif

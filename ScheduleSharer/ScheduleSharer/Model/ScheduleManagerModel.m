@@ -136,7 +136,6 @@
     
     NSError* error;
     NSArray* schedules = [context executeFetchRequest:fetchRequest error:&error];
-    
     for (Schedules* schedule in schedules) {
         // Remove all calendar events if there are any
         NSSet* events = schedule.events;
@@ -151,6 +150,7 @@
                         // TODO: Come up with something to do if can't delete event
                     }
                 }];
+
             }
         }
         
@@ -252,6 +252,7 @@
     [validated_schedule setValue:schedule_owner forKeyPath:API_ITINERARY_OWNER_FIELD];
     
     return validated_schedule;
+
 }
 
 @end

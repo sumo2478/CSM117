@@ -11,6 +11,7 @@
 		A7678CE219159E8100A2D150 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7678CE119159E8100A2D150 /* EventKit.framework */; };
 		A7678CE519159F1600A2D150 /* CalendarManagerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A7678CE419159F1600A2D150 /* CalendarManagerModel.m */; };
 		A7678CE81915E89700A2D150 /* Events+Management.m in Sources */ = {isa = PBXBuildFile; fileRef = A7678CE71915E89700A2D150 /* Events+Management.m */; };
+
 		A7678CF4191850D900A2D150 /* Events.m in Sources */ = {isa = PBXBuildFile; fileRef = A7678CF3191850D900A2D150 /* Events.m */; };
 		A7678CF71918585700A2D150 /* Schedules+Management.m in Sources */ = {isa = PBXBuildFile; fileRef = A7678CF61918585700A2D150 /* Schedules+Management.m */; };
 		A7678CFA19185D9200A2D150 /* Schedules.m in Sources */ = {isa = PBXBuildFile; fileRef = A7678CF919185D9200A2D150 /* Schedules.m */; };
@@ -33,6 +34,7 @@
 		A77B6735191468D500362BEA /* ScheduleManagerModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A77B6734191468D500362BEA /* ScheduleManagerModel.m */; };
 		A77B673719146CDC00362BEA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A77B673619146CDC00362BEA /* CoreData.framework */; };
 		A77B673A19148D1800362BEA /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A77B673819148D1800362BEA /* DataModel.xcdatamodeld */; };
+
 		A7A4D3381926D75200B4536A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A4D3371926D75200B4536A /* AVFoundation.framework */; };
 		A7A4D33A1926D75D00B4536A /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A4D3391926D75D00B4536A /* CoreMedia.framework */; };
 		A7A4D33C1926D76B00B4536A /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A4D33B1926D76B00B4536A /* CoreVideo.framework */; };
@@ -58,12 +60,14 @@
 		A7678CE419159F1600A2D150 /* CalendarManagerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CalendarManagerModel.m; path = Model/CalendarManagerModel.m; sourceTree = "<group>"; };
 		A7678CE61915E89700A2D150 /* Events+Management.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Events+Management.h"; path = "Model/DataBase/Events+Management.h"; sourceTree = "<group>"; };
 		A7678CE71915E89700A2D150 /* Events+Management.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Events+Management.m"; path = "Model/DataBase/Events+Management.m"; sourceTree = "<group>"; };
+
 		A7678CF2191850D900A2D150 /* Events.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Events.h; path = Model/DataBase/Events.h; sourceTree = "<group>"; };
 		A7678CF3191850D900A2D150 /* Events.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Events.m; path = Model/DataBase/Events.m; sourceTree = "<group>"; };
 		A7678CF51918585700A2D150 /* Schedules+Management.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Schedules+Management.h"; path = "Model/DataBase/Schedules+Management.h"; sourceTree = "<group>"; };
 		A7678CF61918585700A2D150 /* Schedules+Management.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Schedules+Management.m"; path = "Model/DataBase/Schedules+Management.m"; sourceTree = "<group>"; };
 		A7678CF819185D9200A2D150 /* Schedules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Schedules.h; path = Model/DataBase/Schedules.h; sourceTree = "<group>"; };
 		A7678CF919185D9200A2D150 /* Schedules.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Schedules.m; path = Model/DataBase/Schedules.m; sourceTree = "<group>"; };
+
 		A77B66F119132F8C00362BEA /* ScheduleSharer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScheduleSharer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A77B66F419132F8C00362BEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A77B66F619132F8C00362BEA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -91,11 +95,13 @@
 		A77B6734191468D500362BEA /* ScheduleManagerModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ScheduleManagerModel.m; path = Model/ScheduleManagerModel.m; sourceTree = "<group>"; };
 		A77B673619146CDC00362BEA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		A77B673919148D1800362BEA /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+
 		A7A4D3371926D75200B4536A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		A7A4D3391926D75D00B4536A /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		A7A4D33B1926D76B00B4536A /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		A7A4D33D1926D77800B4536A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A7A4D33F1926D78600B4536A /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
+
 		A7F42EDE19156AE4003E5908 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = Controller/BaseViewController.h; sourceTree = "<group>"; };
 		A7F42EDF19156AE4003E5908 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = Controller/BaseViewController.m; sourceTree = "<group>"; };
 		B502BD9DF1914A309E934FDB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+
 				A7A4D3401926D78600B4536A /* libiconv.dylib in Frameworks */,
 				A7A4D33E1926D77800B4536A /* QuartzCore.framework in Frameworks */,
 				A7A4D33C1926D76B00B4536A /* CoreVideo.framework in Frameworks */,
@@ -269,6 +276,7 @@
 		A7F42ED71914BF89003E5908 /* DataBase */ = {
 			isa = PBXGroup;
 			children = (
+
 				A77B673819148D1800362BEA /* DataModel.xcdatamodeld */,
 				A7678CF819185D9200A2D150 /* Schedules.h */,
 				A7678CF919185D9200A2D150 /* Schedules.m */,

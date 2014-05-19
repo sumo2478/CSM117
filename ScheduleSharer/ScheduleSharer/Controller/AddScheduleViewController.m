@@ -12,7 +12,9 @@
 #import "CalendarManagerModel.h"
 #import "ConnectionModel.h"
 #import "ScheduleManagerModel.h"
+
 #import "Schedules+Management.h"
+
 #import "Events+Management.h"
 
 @interface AddScheduleViewController ()
@@ -48,6 +50,7 @@
 
 -(IBAction) download:(id)sender
 {
+
 //    NSArray* keys = [NSArray arrayWithObjects:@"title", @"description", @"location", @"start_time", @"end_time", @"recurring", @"recurring_end_time", nil];
 //    NSArray* values = [NSArray arrayWithObjects:@"Test Event", @"Event for testing purposes", @"UCLA", @"5/12/2014 3:30", @"5/12/2014 4:30", @"2",@"5/12/2015 4:30", nil];
 //    NSDictionary* event = [NSDictionary dictionaryWithObjects:values forKeys:keys];
@@ -171,14 +174,17 @@
         NSLog(@"Results: %@", results);
         NSManagedObjectContext* context = [self managedObjectContext];
         ScheduleManagerModel* manager = [[ScheduleManagerModel alloc] initWithObjectContext: context];
+
         
         // Save the schedule to the local database
         if (![manager addScheduleWithData:results])
         {
+
             [self alertWithTitle:@"Error" Message:@"Unable to save schedule to phone"];
         }
         
         
+
         // Sync database entry with calendar
         [CalendarManagerModel requestAccess:^(BOOL granted, NSError *error) {
             if (granted) {
@@ -210,19 +216,21 @@
                     
                 }
                 // END TODO
-                
+
             }else{
                 NSLog(@"Denied permission");
             }
         }];
         
-        
+
         
     }];
     
     [self alertWithTitle:@"Success" Message:@"Successfully downloaded schedule"];
 
+
     
     return result;
+
 }
 @end

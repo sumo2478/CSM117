@@ -24,7 +24,10 @@
  *
  *  @return YES on success, NO on failure of saving schedule
  */
+
 - (BOOL) addScheduleWithData: (NSDictionary*) data;
+
+
 
 /**
  *  Deles a schedule from the local database with the given code
