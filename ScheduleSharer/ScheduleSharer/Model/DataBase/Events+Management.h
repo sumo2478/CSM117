@@ -10,7 +10,6 @@
 
 @interface Events (Management)
 
-
 /**
  *  Convience function to create an event Core Data Object
  *

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "AddScheduleViewController.h"
+#import "ScheduleCatalogViewController.h"
 #import "Events.h"
 #import "Schedules.h"
 
@@ -66,6 +67,13 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
+    ScheduleCatalogViewController* scheduleCatalogViewController = [[ScheduleCatalogViewController alloc] initWithNibName:@"ScheduleCatalogViewController" bundle:nil];
+    
+    scheduleCatalogViewController.managedObjectContext = self.managedObjectContext;
+    
+    UINavigationController *navController=[[UINavigationController alloc]initWithRootViewController:scheduleCatalogViewController];
+    self.window.rootViewController=navController;
+    /*
     // TODO: Change this to the actual starting view controller
     AddScheduleViewController* addScheduleViewController = [[AddScheduleViewController alloc] initWithNibName:@"AddScheduleView" bundle:nil];
     
@@ -73,7 +81,7 @@
     addScheduleViewController.managedObjectContext = self.managedObjectContext;
     
     self.window.rootViewController = addScheduleViewController;
-    
+    */
     [self.window makeKeyAndVisible];
     return YES;
 }
