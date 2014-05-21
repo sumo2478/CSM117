@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Collin Yen. All rights reserved.
 //
 
+#import "Schedules+Management.h"
 #import <Foundation/Foundation.h>
 
 @interface ScheduleManagerModel : NSObject
@@ -25,7 +26,7 @@
  *  @return YES on success, NO on failure of saving schedule
  */
 
-- (BOOL) addScheduleWithData: (NSDictionary*) data;
+- (Schedules*) addScheduleWithData: (NSDictionary*) data;
 
 
 

@@ -127,7 +127,6 @@
     UIBarButtonItem* sync_button = (UIBarButtonItem*) self.navigationItem.rightBarButtonItem;
     
     if ([self.mySchedule.is_synced intValue]) {
-        sync_button.title = @"Sync";
 
         // Sync the schedule
         // TODO: Handle errors
@@ -150,6 +149,11 @@
                     self.mySchedule.is_synced = [NSNumber numberWithBool:YES];
                     return;
                 }
+                
+                // Change the title of the sync button
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.navigationItem.rightBarButtonItem setTitle:@"Sync"];
+                });
             }
             else
             {
@@ -180,6 +184,11 @@
                         self.mySchedule.is_synced = [NSNumber numberWithBool:NO];
                         return;
                     }
+                    
+                    // Change the title of the sync button
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.navigationItem.rightBarButtonItem setTitle:@"Unsync"];
+                    });
                 }
                 else
                 {

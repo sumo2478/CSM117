@@ -12,10 +12,11 @@
 #import "CalendarManagerModel.h"
 #import "ConnectionModel.h"
 #import "ScheduleManagerModel.h"
+#import "ScheduleDetailViewController.h"
 
 #import "Schedules+Management.h"
-
 #import "Events+Management.h"
+
 
 @interface AddScheduleViewController ()
 
@@ -50,7 +51,7 @@
 
 -(IBAction) download:(id)sender
 {
-
+    [self downloadSchedule:self.codeTextField.text];
 }
 
 - (IBAction)scan:(id)sender
@@ -102,16 +103,30 @@
         NSManagedObjectContext* context = [self managedObjectContext];
         ScheduleManagerModel* manager = [[ScheduleManagerModel alloc] initWithObjectContext: context];
 
+        Schedules* schedule = [manager addScheduleWithData:results];
         
         // Save the schedule to the local database
-        if (![manager addScheduleWithData:results])
+        if (!schedule)
         {
             [self alertWithTitle:@"Error" Message:@"Unable to save schedule to phone"];
+            return;
         }
         
+        
+        ScheduleDetailViewController* schedule_detail_controller = [[ScheduleDetailViewController alloc] initWithNibName:nil bundle:nil];
+        schedule_detail_controller.managedObjectContext = self.managedObjectContext;
+        schedule_detail_controller.mySchedule = schedule;
+        
+        
+        NSMutableArray *viewControllers = [NSMutableArray arrayWithArray: self.navigationController.viewControllers];
+        [viewControllers removeObjectIdenticalTo:self];
+        [viewControllers addObject:schedule_detail_controller];
+        [self.navigationController setViewControllers: viewControllers animated: YES];
     }];
     
     return result;
 
 }
+
+
 @end
