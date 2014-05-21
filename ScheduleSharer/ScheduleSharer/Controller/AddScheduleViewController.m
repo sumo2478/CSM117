@@ -109,52 +109,7 @@
             [self alertWithTitle:@"Error" Message:@"Unable to save schedule to phone"];
         }
         
-        
-
-        // Sync database entry with calendar
-        [CalendarManagerModel requestAccess:^(BOOL granted, NSError *error) {
-            if (granted) {
-                
-                // TODO: REMOVE THIS ONLY FOR TESTING //
-                NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-                NSEntityDescription *entity = [Schedules getScheduleDescriptionWithContext:self.managedObjectContext];
-                [fetchRequest setEntity:entity];
-                
-                // TODO CHANGE THIS TO CORRECT PREDICATE
-                NSArray *fetchedObjects = [self.managedObjectContext executeFetchRequest:fetchRequest error:&error];
-                for (Schedules *schedule in fetchedObjects) {
-                    
-                    // For each of the fetched schedules sync it with the user's calendar
-                    if ([CalendarManagerModel syncScheduleWithCode:schedule.code Title:schedule.title Events:schedule.events Context:self.managedObjectContext])
-                    {
-                        NSLog(@"Successfully added schedule");
-                    }
-                    else
-                    {
-                        NSLog(@"Unable to save");
-                    }
-                    
-                    NSSet* events = schedule.events;
-                    for (Events* event in events) {
-                        NSLog(@"Event title: %@", event.title);
-                        NSLog(@"Identifier: %@", event.identifier);
-                    }
-                    
-                }
-                // END TODO
-
-            }else{
-                NSLog(@"Denied permission");
-            }
-        }];
-        
-
-        
     }];
-    
-    [self alertWithTitle:@"Success" Message:@"Successfully downloaded schedule"];
-
-
     
     return result;
 

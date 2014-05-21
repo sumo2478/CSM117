@@ -31,6 +31,7 @@ static EKEventStore* eventStore = nil;
 + (void)requestAccess:(void (^)(BOOL granted, NSError *error))callback
 {
     if (eventStore == nil) {
+        NSLog(@"Allocating event store");
         eventStore = [[EKEventStore alloc] init];
     }
     
@@ -120,13 +121,28 @@ static EKEventStore* eventStore = nil;
     return YES;
 }
 
++ (BOOL) unsyncSchedule: (Schedules*) schedule
+{
+    
+    for (Events* event in schedule.events) {
+        [self deleteEventMatchingIdentifier:event.identifier];
+    }
+    
+    return YES;
+}
+
 + (void) deleteEventMatchingIdentifier: (NSString*) identifier
 {
     EKEvent* event = [eventStore eventWithIdentifier:identifier];
     NSError* error;
     
+    if (!eventStore) {
+        NSLog(@"Event store is nil");
+    }
+    
     if (!event) {
         NSLog(@"Event is nil");
+        NSLog(@"Identifier: %@", identifier);
     }
     else
     {
