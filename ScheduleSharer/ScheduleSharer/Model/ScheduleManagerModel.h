@@ -30,7 +30,8 @@
 
 
 /**
- *  Deles a schedule from the local database with the given code
+ *  Deletes a schedule from the local database with the given code as well
+ *  as the schedule from the phone's calendar
  *
  *  @param code Code of the schedule to be deleted
  *

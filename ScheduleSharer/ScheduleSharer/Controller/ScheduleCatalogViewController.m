@@ -143,7 +143,7 @@
     NSEntityDescription *entity = [Schedules getScheduleDescriptionWithContext:context];
     [fetchRequest setEntity:entity];
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-    scheduleCatalogArray = fetchedObjects;
+    scheduleCatalogArray = [NSMutableArray arrayWithArray:fetchedObjects];
      
     /*
     scheduleCatalogArray = @[@"CS111",@"EE116L",@"STATS105",@"CS117"];
@@ -163,6 +163,8 @@
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"add"
                                                                     style:UIBarButtonItemStyleDone target:self action:@selector(addSchedule:)];
     self.navigationItem.rightBarButtonItem = rightButton;
+    
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
 
 }
 
@@ -170,6 +172,31 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark Table View Editing
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    [super setEditing:editing animated:animated];
+    [self.scheduleCatalogTableView setEditing:editing animated:YES];
+    
+}
+
+- (void)tableView:(UITableView *)tv commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    // If row is deleted, remove it from the list.
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        // Delete the schedule from the phone's data
+        Schedules* schedule = [self.scheduleCatalogArray objectAtIndex:indexPath.row];
+        ScheduleManagerModel* schedule_manager = [[ScheduleManagerModel alloc] initWithObjectContext:[self managedObjectContext]];
+        [schedule_manager deleteScheduleWithCode:schedule.code];
+        
+        // Remove the schedule from the views array
+        [self.scheduleCatalogArray removeObjectAtIndex:indexPath.row];
+        
+        // Delete the schedule from the UI
+        [tv deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
 }
 
 

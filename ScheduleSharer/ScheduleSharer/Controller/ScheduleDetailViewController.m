@@ -9,7 +9,10 @@
 #import "ScheduleDetailViewController.h"
 
 @interface ScheduleDetailViewController ()
+
 @property (weak, nonatomic) IBOutlet UITableView *scheduleDetailTableView;
+
+- (IBAction)schedule_sync:(id)sender;
 
 @end
 
@@ -98,9 +101,11 @@
     self.scheduleDetailTableView.delegate = self;
     if (!eventDetailVC) {
         eventDetailVC = [[EventDetailViewController alloc]initWithNibName:nil bundle:nil];
-        
-        
     }
+    
+    NSString* sync_title = [Schedules syncTitle:self.mySchedule.is_synced];
+    UIBarButtonItem* sync_button = [[UIBarButtonItem alloc] initWithTitle:sync_title style:UIBarButtonItemStylePlain target:self action:@selector(schedule_sync:)];
+    self.navigationItem.rightBarButtonItem = sync_button;
     
 }
 
@@ -108,6 +113,11 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)schedule_sync:(id)sender
+{
+    NSLog(@"Syncing");
 }
 
 @end

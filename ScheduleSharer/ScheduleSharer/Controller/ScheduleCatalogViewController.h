@@ -22,7 +22,7 @@
 
 @property (strong, nonatomic) ScheduleDetailViewController *scheduleDetailVC;
 //- (IBAction)openScheduleDetail:(id)sender;
-@property (strong,nonatomic) NSArray *scheduleCatalogArray;
+@property (strong,nonatomic) NSMutableArray *scheduleCatalogArray;
 @property (strong, nonatomic)NSDictionary *scheduleCatalogDictionary;
 
 @end
