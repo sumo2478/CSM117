@@ -12,4 +12,6 @@
 
 + (NSEntityDescription*) getScheduleDescriptionWithContext: (NSManagedObjectContext*) context;
 
++ (NSString*) syncTitle: (NSNumber*) is_synced;
+
 @end

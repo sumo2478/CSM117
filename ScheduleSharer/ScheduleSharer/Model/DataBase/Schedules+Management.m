@@ -16,4 +16,14 @@
     return [NSEntityDescription entityForName:MODEL_SCHEDULE inManagedObjectContext:context];
 }
 
++ (NSString*) syncTitle: (NSNumber*) is_synced
+{
+    if ([is_synced intValue]) {
+        return @"Unsync";
+    }else
+    {
+        return @"Sync";
+    }
+}
+
 @end

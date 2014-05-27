@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <EventKit/EventKit.h>
+#import "Schedules+Management.h"
 
 @interface CalendarManagerModel : NSObject
 
@@ -28,7 +29,16 @@
  *
  *  @return Success of the operation
  */
-+ (BOOL) syncScheduleWithCode: (NSString*) code Title: (NSString*) title Events: (NSSet*) events Context: (NSManagedObjectContext*) context;
++ (BOOL) syncScheduleWithSchedule: (Schedules*) schedule Context: (NSManagedObjectContext*) context;
+
+/**
+ *  Unsyncs iPhone calendar with core data schedule
+ *
+ *  @param schedule Schedules object to unsync
+ *
+ *  @return Success of the operation
+ */
++ (BOOL) unsyncSchedule: (Schedules*) schedule;
 
 /**
  *  Deletes an event from the calendar matching an event identifier

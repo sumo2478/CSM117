@@ -7,6 +7,7 @@
 //
 
 #import "EventDetailViewController.h"
+#import "Constants.h"
 
 
 
@@ -97,7 +98,7 @@
             [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
             
             NSString *dateString = [dateFormatter stringFromDate:myEvent.recurring_end_date];
-            [identifier appendString:dateString];
+            //[identifier appendString:dateString];
             [cell.textLabel setText:identifier];
             
         }

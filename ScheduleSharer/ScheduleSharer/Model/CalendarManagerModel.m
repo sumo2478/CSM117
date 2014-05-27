@@ -31,6 +31,7 @@ static EKEventStore* eventStore = nil;
 + (void)requestAccess:(void (^)(BOOL granted, NSError *error))callback
 {
     if (eventStore == nil) {
+        NSLog(@"Allocating event store");
         eventStore = [[EKEventStore alloc] init];
     }
     
@@ -38,15 +39,14 @@ static EKEventStore* eventStore = nil;
     [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:callback];
 }
 
-+ (BOOL) syncScheduleWithCode: (NSString*) code Title: (NSString*) title Events: (NSSet*) events Context: (NSManagedObjectContext*) context
-{
++ (BOOL) syncScheduleWithSchedule: (Schedules*) schedule Context: (NSManagedObjectContext*) context{
     // Retrieve the calendar
     BOOL success = NO;
     EKCalendar* calendar = [self retrieveCalendar];
     
     // If the calendar exists then add the events to the calendar
     if (calendar) {
-        success = [self addEventsWithCode:code Events:events ScheduleTitle:title Calendar:calendar Context:context];
+        success = [self addEventsWithCode:schedule.code Events:schedule.events ScheduleTitle:schedule.title Calendar:calendar Context:context];
     }
     
     return success;
@@ -120,13 +120,28 @@ static EKEventStore* eventStore = nil;
     return YES;
 }
 
++ (BOOL) unsyncSchedule: (Schedules*) schedule
+{
+    
+    for (Events* event in schedule.events) {
+        [self deleteEventMatchingIdentifier:event.identifier];
+    }
+    
+    return YES;
+}
+
 + (void) deleteEventMatchingIdentifier: (NSString*) identifier
 {
     EKEvent* event = [eventStore eventWithIdentifier:identifier];
     NSError* error;
     
+    if (!eventStore) {
+        NSLog(@"Event store is nil");
+    }
+    
     if (!event) {
         NSLog(@"Event is nil");
+        NSLog(@"Identifier: %@", identifier);
     }
     else
     {

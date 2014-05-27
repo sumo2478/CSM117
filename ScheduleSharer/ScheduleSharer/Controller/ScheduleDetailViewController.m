@@ -9,13 +9,18 @@
 #import "ScheduleDetailViewController.h"
 
 @interface ScheduleDetailViewController ()
+
 @property (weak, nonatomic) IBOutlet UITableView *scheduleDetailTableView;
+
+- (IBAction)schedule_sync:(id)sender;
 
 @end
 
 @implementation ScheduleDetailViewController
 
 @synthesize mySchedule, myEvents, eventDetailVC;
+
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
@@ -98,16 +103,93 @@
     self.scheduleDetailTableView.delegate = self;
     if (!eventDetailVC) {
         eventDetailVC = [[EventDetailViewController alloc]initWithNibName:nil bundle:nil];
-        
-        
     }
     
+    
+    
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    NSString* sync_title = [Schedules syncTitle:self.mySchedule.is_synced];
+    UIBarButtonItem* sync_button = [[UIBarButtonItem alloc] initWithTitle:sync_title style:UIBarButtonItemStylePlain target:self action:@selector(schedule_sync:)];
+    self.navigationItem.rightBarButtonItem = sync_button;
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)schedule_sync:(id)sender
+{
+    
+    
+    
+    // Gain access to the calendar
+    [CalendarManagerModel requestAccess:^(BOOL granted, NSError *error) {
+        if (granted)
+        {
+            // Unsync the schedule from the iPhone calendar
+            if ([self.mySchedule.is_synced intValue]) {
+                [CalendarManagerModel unsyncSchedule:self.mySchedule];
+                
+                // Set the schedule to be unsynced
+                self.mySchedule.is_synced = [NSNumber numberWithBool:NO];
+                
+                // Save the results
+                NSError* error;
+                if (![self.managedObjectContext save:&error]) {
+                    // Error saving the schedule
+                    NSLog(@"Error saving object: %@", [error localizedDescription]);
+                    self.mySchedule.is_synced = [NSNumber numberWithBool:YES];
+                    return;
+                }
+                
+                // Change the title of the sync button
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [self.navigationItem.rightBarButtonItem setTitle:@"Sync"];
+                });
+
+            }
+            // Sync the schedule
+            else
+            {
+                if ([CalendarManagerModel syncScheduleWithSchedule:self.mySchedule Context:self.managedObjectContext])
+                {
+                    NSLog(@"Successfully added schedule");
+                    
+                    // Set the schedule to be synced
+                    self.mySchedule.is_synced = [NSNumber numberWithBool:YES];
+                    
+                    // Save the results
+                    if (![self.managedObjectContext save:&error]) {
+                        // Error saving the schedule
+                        NSLog(@"Error saving object: %@", [error localizedDescription]);
+                        self.mySchedule.is_synced = [NSNumber numberWithBool:NO];
+                        return;
+                    }
+                    
+                    // Change the title of the sync button
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [self.navigationItem.rightBarButtonItem setTitle:@"Unsync"];
+                    });
+                }
+                else
+                {
+                    NSLog(@"Unable to save");
+                }
+            }
+        }
+        else
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self alertWithTitle:@"Permission Denied" Message:@"Unable to save schedule to your calendar. Please check your privacy settings"];
+            });
+        }
+    }];
+    
 }
 
 @end

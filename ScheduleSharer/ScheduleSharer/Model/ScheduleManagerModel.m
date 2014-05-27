@@ -11,7 +11,6 @@
 #import "Constants.h"
 #import "Schedules.h"
 #import "Events+Management.h"
-#import "Schedules+Management.h"
 #import "CalendarManagerModel.h"
 
 
@@ -67,7 +66,7 @@
     return self;
 }
 
-- (BOOL) addScheduleWithData:(NSDictionary *)data
+- (Schedules*) addScheduleWithData:(NSDictionary *)data
 {
     // Validate the json data object
     NSDictionary* validated_data = [self validateSchedule:data];
@@ -81,12 +80,12 @@
     //If Title, Code, or Events is not provided then return error
     if ([code isEqualToString:@""] || [title isEqualToString:@""] || !events) {
         NSLog(@"Improperly received data");
-        return NO;
+        return nil;
     }
     
     // First delete a schedule with the same code if it exists
     if (![self deleteScheduleWithCode:code]) {
-        return NO;
+        return nil;
     }
     
     // Initialize date formatter
@@ -118,10 +117,10 @@
     if (![context save:&error]) {
         // TODO: Change this to proper error behavior
         NSLog(@"Error saving object: %@", [error localizedDescription]);
-        return NO;
+        return nil;
     }
     
-    return YES;
+    return schedule;
 }
 
 -(BOOL) deleteScheduleWithCode: (NSString*) code
