@@ -27,4 +27,14 @@
 + (Events*) eventWithTitle: (NSString*) title Location: (NSString*) location Description: (NSString*) description StartTime: (NSString*) start_time EndTime: (NSString*) end_date Recurring: (NSNumber*) recurring RecurringEnd: (NSString*) reccuring_end Context: (NSManagedObjectContext*) context;
 
 
+/**
+ *  Converts recurrence rule integer to english language
+ *
+ *  @param recurrence_rule The integer value of the recurrence rule
+ *
+ *  @return String containing the recurrence rule
+ */
++ (NSString*) recurrenceRuleToString: (NSNumber*) recurrence_rule;
+
+
 @end

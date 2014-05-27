@@ -36,4 +36,28 @@
     return event;
 }
 
++ (NSString*) recurrenceRuleToString: (NSNumber*) recurrence_rule
+{
+    NSString* rule;
+    
+    switch ([recurrence_rule intValue]) {
+        case RECURRANCE_NONE:
+            rule = @"None";
+            break;
+        case RECURRANCE_WEEKLY:
+            rule = @"Weekly";
+            break;
+        case RECURRANCE_MONTHLY:
+            rule = @"Monthly";
+            break;
+        case RECURRANCE_YEARLY:
+            rule = @"Yearly";
+            break;
+        default:
+            break;
+    }
+    
+    return rule;
+}
+
 @end

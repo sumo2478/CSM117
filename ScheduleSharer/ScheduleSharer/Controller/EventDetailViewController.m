@@ -85,8 +85,8 @@
         case 4:
         {
             NSMutableString *identifier = [NSMutableString stringWithString: @"Recurring: "];
-            //NSString *recurring = [myEvent.recurring stringValue];
-            [identifier appendString:[myEvent.recurring stringValue]];
+            NSString* rule = [Events recurrenceRuleToString:myEvent.recurring];
+            [identifier appendString:rule];
             [cell.textLabel setText:identifier];
             
         }
