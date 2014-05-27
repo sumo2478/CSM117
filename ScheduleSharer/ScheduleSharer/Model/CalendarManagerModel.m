@@ -39,15 +39,14 @@ static EKEventStore* eventStore = nil;
     [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:callback];
 }
 
-+ (BOOL) syncScheduleWithCode: (NSString*) code Title: (NSString*) title Events: (NSSet*) events Context: (NSManagedObjectContext*) context
-{
++ (BOOL) syncScheduleWithSchedule: (Schedules*) schedule Context: (NSManagedObjectContext*) context{
     // Retrieve the calendar
     BOOL success = NO;
     EKCalendar* calendar = [self retrieveCalendar];
     
     // If the calendar exists then add the events to the calendar
     if (calendar) {
-        success = [self addEventsWithCode:code Events:events ScheduleTitle:title Calendar:calendar Context:context];
+        success = [self addEventsWithCode:schedule.code Events:schedule.events ScheduleTitle:schedule.title Calendar:calendar Context:context];
     }
     
     return success;

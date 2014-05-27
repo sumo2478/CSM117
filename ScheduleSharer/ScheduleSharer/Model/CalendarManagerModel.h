@@ -29,7 +29,7 @@
  *
  *  @return Success of the operation
  */
-+ (BOOL) syncScheduleWithCode: (NSString*) code Title: (NSString*) title Events: (NSSet*) events Context: (NSManagedObjectContext*) context;
++ (BOOL) syncScheduleWithSchedule: (Schedules*) schedule Context: (NSManagedObjectContext*) context;
 
 /**
  *  Unsyncs iPhone calendar with core data schedule

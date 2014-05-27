@@ -98,7 +98,6 @@
             [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
             
             NSString *dateString = [dateFormatter stringFromDate:myEvent.recurring_end_date];
-            NSLog(@"Recurring: %@", myEvent.recurring_end_date);
             //[identifier appendString:dateString];
             [cell.textLabel setText:identifier];
             

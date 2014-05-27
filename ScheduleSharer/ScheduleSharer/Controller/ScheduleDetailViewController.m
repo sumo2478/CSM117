@@ -124,18 +124,15 @@
 
 - (IBAction)schedule_sync:(id)sender
 {
-    UIBarButtonItem* sync_button = (UIBarButtonItem*) self.navigationItem.rightBarButtonItem;
     
-    if ([self.mySchedule.is_synced intValue]) {
-
-        // Sync the schedule
-        // TODO: Handle errors
-        
-        // Gain access to the calendar
-        [CalendarManagerModel requestAccess:^(BOOL granted, NSError *error) {
-            if (granted)
-            {
-                // Unsync the schedule from the iPhone calendar
+    
+    
+    // Gain access to the calendar
+    [CalendarManagerModel requestAccess:^(BOOL granted, NSError *error) {
+        if (granted)
+        {
+            // Unsync the schedule from the iPhone calendar
+            if ([self.mySchedule.is_synced intValue]) {
                 [CalendarManagerModel unsyncSchedule:self.mySchedule];
                 
                 // Set the schedule to be unsynced
@@ -154,23 +151,12 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.navigationItem.rightBarButtonItem setTitle:@"Sync"];
                 });
+
             }
+            // Sync the schedule
             else
             {
-                NSLog(@"Denied permission");
-            }
-        }];
-    }
-    else
-    {
-        // Sync the schedule
-        // TODO: Handle errors
-        // Gain access to the calendar
-        [CalendarManagerModel requestAccess:^(BOOL granted, NSError *error) {
-            if (granted)
-            {
-                // Sync the schedule
-                if ([CalendarManagerModel syncScheduleWithCode:self.mySchedule.code Title:self.mySchedule.title Events:self.mySchedule.events Context:self.managedObjectContext])
+                if ([CalendarManagerModel syncScheduleWithSchedule:self.mySchedule Context:self.managedObjectContext])
                 {
                     NSLog(@"Successfully added schedule");
                     
@@ -195,13 +181,14 @@
                     NSLog(@"Unable to save");
                 }
             }
-            else
-            {
-                NSLog(@"Denied permission");
-            }
-        }];
-    }
-    
+        }
+        else
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self alertWithTitle:@"Permission Denied" Message:@"Unable to save schedule to your calendar. Please check your privacy settings"];
+            });
+        }
+    }];
     
 }
 
