@@ -187,6 +187,11 @@
     //self.eventDetailTableView.dataSource = self;
     //self.eventDetailTableView.delegate = self;
     
+    
+    
+}
+- (void)viewWillAppear:(BOOL)animated
+{
     //setting description
     self.eventDescriptionLabel.text = @"Description:";
     
@@ -202,10 +207,10 @@
     NSMutableString *identifier = [NSMutableString stringWithString: @"Location: "];
     [identifier appendString:myEvent.location];
     [self.locationLabel setText:identifier];
-            
-
+    
+    
     //setting start time
-
+    
     identifier = [NSMutableString stringWithString: @"Start Time: "];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
@@ -253,7 +258,6 @@
     }
     else
         [self.endDateLabel setText:identifier];
-    
 }
 
 - (void)didReceiveMemoryWarning

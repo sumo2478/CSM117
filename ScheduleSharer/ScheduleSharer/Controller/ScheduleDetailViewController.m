@@ -115,6 +115,9 @@
     NSString* sync_title = [Schedules syncTitle:self.mySchedule.is_synced];
     UIBarButtonItem* sync_button = [[UIBarButtonItem alloc] initWithTitle:sync_title style:UIBarButtonItemStylePlain target:self action:@selector(schedule_sync:)];
     self.navigationItem.rightBarButtonItem = sync_button;
+    
+    myEvents = [mySchedule.events allObjects];
+    [self.scheduleDetailTableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
