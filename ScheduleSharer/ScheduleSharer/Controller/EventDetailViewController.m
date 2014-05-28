@@ -112,9 +112,10 @@
             NSDate *recurring_end_date = myEvent.recurring_end_date;
             if (recurring_end_date) {
                 [cell.textLabel setText:@""];
+                NSString *dateString = [dateFormatter stringFromDate:recurring_end_date];
+                [identifier appendString:dateString];
             }
-            NSString *dateString = [dateFormatter stringFromDate:recurring_end_date];
-            [identifier appendString:dateString];
+
 
             [cell.textLabel setText:identifier];
             

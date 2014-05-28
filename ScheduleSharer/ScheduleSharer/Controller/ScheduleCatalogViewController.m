@@ -129,7 +129,7 @@
     }
     return self;
 }
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -143,7 +143,7 @@
     NSEntityDescription *entity = [Schedules getScheduleDescriptionWithContext:context];
     [fetchRequest setEntity:entity];
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-    scheduleCatalogArray = fetchedObjects;
+    scheduleCatalogArray = [NSMutableArray arrayWithArray:fetchedObjects];
     
     /*
      scheduleCatalogArray = @[@"CS111",@"EE116L",@"STATS105",@"CS117"];
@@ -163,6 +163,8 @@
     UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"add"
                                                                     style:UIBarButtonItemStyleDone target:self action:@selector(addSchedule:)];
     self.navigationItem.rightBarButtonItem = rightButton;
+    
+    [self.scheduleCatalogTableView reloadData];
 }
 - (void)viewDidLoad
 {
