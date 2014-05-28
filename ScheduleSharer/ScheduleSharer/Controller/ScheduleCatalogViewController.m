@@ -119,6 +119,7 @@
     
     
     [self.navigationController pushViewController:self.scheduleDetailVC animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -128,7 +129,41 @@
     }
     return self;
 }
-
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    self.title = @"My Schedules";
+    self.scheduleCatalogTableView.dataSource = self;
+    self.scheduleCatalogTableView.delegate = self;
+    
+    NSManagedObjectContext* context = [self managedObjectContext];
+    NSError* error;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [Schedules getScheduleDescriptionWithContext:context];
+    [fetchRequest setEntity:entity];
+    NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
+    scheduleCatalogArray = fetchedObjects;
+    
+    /*
+     scheduleCatalogArray = @[@"CS111",@"EE116L",@"STATS105",@"CS117"];
+     scheduleCatalogDictionary  = @{
+     @"CS111": @"M W 2pm to 4pm",
+     @"EE116L": @"M W 12pm to 2pm",
+     @"STATS105": @"T TR 8am to 10am",
+     @"CS117": @"T TR 4pm to 6pm"
+     };
+     */
+    if (!scheduleDetailVC) {
+        scheduleDetailVC = [[ScheduleDetailViewController alloc]initWithNibName:nil bundle:nil];
+        
+        
+    }
+    
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"add"
+                                                                    style:UIBarButtonItemStyleDone target:self action:@selector(addSchedule:)];
+    self.navigationItem.rightBarButtonItem = rightButton;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
