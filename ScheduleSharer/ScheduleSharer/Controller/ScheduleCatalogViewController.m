@@ -130,7 +130,7 @@
     }
     return self;
 }
-- (void)viewDidAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     NSLog(@"viewdidappear");
     [super viewDidLoad];
@@ -142,7 +142,7 @@
     NSEntityDescription *entity = [Schedules getScheduleDescriptionWithContext:context];
     [fetchRequest setEntity:entity];
     NSArray *fetchedObjects = [context executeFetchRequest:fetchRequest error:&error];
-    scheduleCatalogArray = fetchedObjects;
+    scheduleCatalogArray = [NSMutableArray arrayWithArray:fetchedObjects];
     
     /*
      scheduleCatalogArray = @[@"CS111",@"EE116L",@"STATS105",@"CS117"];
