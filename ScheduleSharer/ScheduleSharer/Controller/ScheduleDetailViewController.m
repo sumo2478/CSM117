@@ -76,6 +76,7 @@
     
     eventDetailVC.myEvent = myEvents[indexPath.row];
     [self.navigationController pushViewController:self.eventDetailVC animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
      
 }
 

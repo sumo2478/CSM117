@@ -43,8 +43,8 @@
     switch (indexPath.row) {
         case 0:
         {
-            NSMutableString *identifier = [NSMutableString stringWithString: @"Identifier: "];
-            [identifier appendString:myEvent.identifier];
+            NSMutableString *identifier = [NSMutableString stringWithString: @"Description: "];
+            [identifier appendString:myEvent.desc];
             [cell.textLabel setText:identifier];
             
         }
@@ -62,11 +62,16 @@
             NSMutableString *identifier = [NSMutableString stringWithString: @"Start Time: "];
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
             [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-            
-            NSString *dateString = [dateFormatter stringFromDate:myEvent.start_time];
-            [identifier appendString:dateString];
-            [cell.textLabel setText:identifier];
-            
+            [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+            NSDate *start_time = myEvent.start_time;
+            if (start_time == nil) {
+                [cell.textLabel setText:@""];
+            }
+            else {
+                NSString *dateString = [dateFormatter stringFromDate:start_time];
+                [identifier appendString:dateString];
+                [cell.textLabel setText:identifier];
+            }
         }
             break;
         case 3:
@@ -74,10 +79,16 @@
             NSMutableString *identifier = [NSMutableString stringWithString: @"End Time: "];
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
             [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-            
-            NSString *dateString = [dateFormatter stringFromDate:myEvent.end_time];
-            [identifier appendString:dateString];
-            [cell.textLabel setText:identifier];
+            [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+            NSDate *end_time = myEvent.end_time;
+            if (end_time == nil) {
+                [cell.textLabel setText:@""];
+            }
+            else {
+                NSString *dateString = [dateFormatter stringFromDate:end_time];
+                [identifier appendString:dateString];
+                [cell.textLabel setText:identifier];
+            }
             
         }
             break;
@@ -96,7 +107,11 @@
             NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
             [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
             
-            NSString *dateString = [dateFormatter stringFromDate:myEvent.recurring_end_date];
+            NSDate *recurring_end_date = myEvent.recurring_end_date;
+            if (recurring_end_date) {
+                [cell.textLabel setText:@""];
+            }
+            NSString *dateString = [dateFormatter stringFromDate:recurring_end_date];
             [identifier appendString:dateString];
             [cell.textLabel setText:identifier];
             
@@ -137,6 +152,7 @@
     
     //eventDetailVC.myEvent = myEvents[indexPath.row];
     //[self.navigationController pushViewController:self.eventDetailVC animated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }
 
