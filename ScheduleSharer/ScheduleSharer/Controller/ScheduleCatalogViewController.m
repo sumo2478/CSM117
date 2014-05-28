@@ -44,6 +44,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"cellForRowAtIndexPath");
     static NSString *cellIdentifier = @"SettingsCell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
@@ -131,12 +132,10 @@
 }
 - (void)viewDidAppear:(BOOL)animated
 {
+    NSLog(@"viewdidappear");
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = @"My Schedules";
-    self.scheduleCatalogTableView.dataSource = self;
-    self.scheduleCatalogTableView.delegate = self;
-    
+
     NSManagedObjectContext* context = [self managedObjectContext];
     NSError* error;
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -159,10 +158,9 @@
         
         
     }
+    [self.scheduleCatalogTableView reloadData];
     
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"add"
-                                                                    style:UIBarButtonItemStyleDone target:self action:@selector(addSchedule:)];
-    self.navigationItem.rightBarButtonItem = rightButton;
+
 }
 - (void)viewDidLoad
 {
