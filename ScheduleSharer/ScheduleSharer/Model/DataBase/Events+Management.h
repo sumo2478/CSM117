@@ -7,6 +7,7 @@
 //
 
 #import "Events.h"
+#import <EventKit/EventKit.h>
 
 @interface Events (Management)
 
@@ -35,6 +36,29 @@
  *  @return String containing the recurrence rule
  */
 + (NSString*) recurrenceRuleToString: (NSNumber*) recurrence_rule;
+
+
+/**
+ *  Creates an EKEvent from a database Events object
+ *
+ *  @param event      The database Events object
+ *  @param eventStore The EKEventStore to associate the event to
+ *
+ *  @return The EKEvent created with the data of the Events object
+ */
+
+/**
+ *  Creates an EKEvent from a database Events object
+ *
+ *  @param event_object   The database Events object
+ *  @param code           The code for the schedule
+ *  @param schedule_title The title of the schedule associated with the event
+ *  @param calendar       The calendar to be associated with the event
+ *  @param eventStore     The EKEventStore to associate the event to
+ *
+ *  @return The EKEvent created with the data of the Events object
+ */
++ (EKEvent*) createEKEventWithEvent: (Events*) event_object Code: (NSString*) code ScheduleTitle: (NSString*) schedule_title Calendar: (EKCalendar*) calendar EventStore: (EKEventStore*) eventStore;
 
 
 @end
