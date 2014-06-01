@@ -7,7 +7,6 @@
 //
 
 #import "Events+Management.h"
-
 #import "Constants.h"
 
 @implementation Events (Management)
@@ -29,7 +28,6 @@
     event.recurring  = recurring;
 
     if ([recurring intValue]) {
-        [dateFormat setDateFormat:API_SERVER_RECURRING_FORMAT];
         event.recurring_end_date = [dateFormat dateFromString:recurring_end];
     }
     
@@ -58,6 +56,49 @@
     }
     
     return rule;
+}
+
++ (EKEvent*) createEKEventWithEvent: (Events*) event_object Code: (NSString*) code ScheduleTitle: (NSString*) schedule_title Calendar: (EKCalendar*) calendar EventStore: (EKEventStore*) eventStore
+{
+    EKEvent* event = [EKEvent eventWithEventStore:eventStore];
+    NSURL* url = [NSURL URLWithString:code];
+    NSString* event_title = [NSString stringWithFormat:@"%@: %@", schedule_title, event_object.title];
+    
+    [event setCalendar:calendar];
+    [event setTitle:event_title];
+    [event setLocation:event_object.location];
+    [event setStartDate:event_object.start_time];
+    [event setEndDate:event_object.end_time];
+    [event setNotes:event_object.desc];
+    [event setURL:url];
+    
+    // Set the recurrence rules
+    if ([event_object.recurring intValue]) {
+        EKRecurrenceEnd* recurrence_end = [EKRecurrenceEnd recurrenceEndWithEndDate:event_object.recurring_end_date];
+        EKRecurrenceRule* recurrence_rule = nil;
+        
+        switch ([event_object.recurring intValue]) {
+            case RECURRANCE_DAILY:
+                recurrence_rule = [[EKRecurrenceRule alloc] initRecurrenceWithFrequency:EKRecurrenceFrequencyDaily interval:1 end:recurrence_end];
+                break;
+            case RECURRANCE_WEEKLY:
+                recurrence_rule = [[EKRecurrenceRule alloc] initRecurrenceWithFrequency:EKRecurrenceFrequencyWeekly interval:1 end:recurrence_end];
+                break;
+            case RECURRANCE_MONTHLY:
+                recurrence_rule = [[EKRecurrenceRule alloc] initRecurrenceWithFrequency:EKRecurrenceFrequencyMonthly interval:1 end:recurrence_end];
+                break;
+            case RECURRANCE_YEARLY:
+                recurrence_rule = [[EKRecurrenceRule alloc] initRecurrenceWithFrequency:EKRecurrenceFrequencyYearly interval:1 end:recurrence_end];
+                break;
+                
+            default:
+                break;
+        }
+        
+        [event setRecurrenceRules:[NSArray arrayWithObject:recurrence_rule]];
+    }
+    
+    return event;
 }
 
 @end

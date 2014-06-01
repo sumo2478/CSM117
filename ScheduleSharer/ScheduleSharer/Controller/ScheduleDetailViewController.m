@@ -70,19 +70,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
+    EKEventViewController* event_view_controller = [[EKEventViewController alloc] init];
+    EKEvent* event = [Events createEKEventWithEvent:myEvents[indexPath.row] Code:mySchedule.code ScheduleTitle:mySchedule.title Calendar:nil EventStore:nil];
+    event_view_controller.event = event;
+
+    [self.navigationController pushViewController:event_view_controller animated:YES];
     
-    NSLog(@"select");
-    
-    //NSString *title = [self.scheduleCatalogArray objectAtIndex:indexPath.row];
-    //scheduleDetailVC.scheduleTitle.text = title;
-    //scheduleDetailVC.scheduleTime.text = scheduleCatalogDictionary[title];
-    eventDetailVC.managedObjectContext = self.managedObjectContext;
-    //eventDetailVC.mySchedule = [self.scheduleCatalogArray objectAtIndex:indexPath.row];
-    
-    eventDetailVC.myEvent = myEvents[indexPath.row];
-    [self.navigationController pushViewController:self.eventDetailVC animated:YES];
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-     
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -195,5 +189,6 @@
     }];
     
 }
+
 
 @end

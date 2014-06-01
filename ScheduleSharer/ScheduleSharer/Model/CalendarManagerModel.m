@@ -9,7 +9,7 @@
 #import "CalendarManagerModel.h"
 
 #import "Constants.h"
-#import "Events.h"
+#import "Events+Management.h"
 
 @interface CalendarManagerModel()
 
@@ -63,43 +63,7 @@ static EKEventStore* eventStore = nil;
     
     // Add in each event
     for (Events* event_object in events) {
-        EKEvent* event = [EKEvent eventWithEventStore:eventStore];
-        NSURL* url = [NSURL URLWithString:code];
-        NSString* event_title = [NSString stringWithFormat:@"%@: %@", title, event_object.title];
-        
-        [event setCalendar:calendar];
-        [event setTitle:event_title];
-        [event setLocation:event_object.location];
-        [event setStartDate:event_object.start_time];
-        [event setEndDate:event_object.end_time];
-        [event setNotes:event_object.desc];
-        [event setURL:url];
-        
-        // Set the recurrence rules
-        if ([event_object.recurring intValue]) {
-            EKRecurrenceEnd* recurrence_end = [EKRecurrenceEnd recurrenceEndWithEndDate:event_object.recurring_end_date];
-            EKRecurrenceRule* recurrence_rule = nil;
-            
-            switch ([event_object.recurring intValue]) {
-                case RECURRANCE_DAILY:
-                    recurrence_rule = [[EKRecurrenceRule alloc] initRecurrenceWithFrequency:EKRecurrenceFrequencyDaily interval:1 end:recurrence_end];
-                    break;
-                case RECURRANCE_WEEKLY:
-                    recurrence_rule = [[EKRecurrenceRule alloc] initRecurrenceWithFrequency:EKRecurrenceFrequencyWeekly interval:1 end:recurrence_end];
-                    break;
-                case RECURRANCE_MONTHLY:
-                    recurrence_rule = [[EKRecurrenceRule alloc] initRecurrenceWithFrequency:EKRecurrenceFrequencyMonthly interval:1 end:recurrence_end];
-                    break;
-                case RECURRANCE_YEARLY:
-                    recurrence_rule = [[EKRecurrenceRule alloc] initRecurrenceWithFrequency:EKRecurrenceFrequencyYearly interval:1 end:recurrence_end];
-                    break;
-                    
-                default:
-                    break;
-            }
-            
-            [event setRecurrenceRules:[NSArray arrayWithObject:recurrence_rule]];
-        }
+        EKEvent* event = [Events createEKEventWithEvent:event_object Code:code ScheduleTitle:title Calendar:calendar EventStore:eventStore];
         
         // Save the event to the calendar
         NSError* error = nil;

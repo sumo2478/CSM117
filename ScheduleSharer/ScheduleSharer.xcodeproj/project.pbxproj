@@ -148,6 +148,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A70630BD1938276900CB124D /* UtilityControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A7F42EDE19156AE4003E5908 /* BaseViewController.h */,
+				A7F42EDF19156AE4003E5908 /* BaseViewController.m */,
+			);
+			name = UtilityControllers;
+			sourceTree = "<group>";
+		};
 		A77B66E819132F8C00362BEA = {
 			isa = PBXGroup;
 			children = (
@@ -260,6 +269,7 @@
 		A77B672519141A9300362BEA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A70630BD1938276900CB124D /* UtilityControllers */,
 				CEDEF7E01929FCB800019E93 /* ScheduleCatalogViewController.h */,
 				CEDEF7E11929FCB800019E93 /* ScheduleCatalogViewController.m */,
 				CEDEF7E21929FCB800019E93 /* ScheduleDetailViewController.h */,
@@ -268,8 +278,6 @@
 				CEDEF7DF1929FCB800019E93 /* EventDetailViewController.m */,
 				A77B672719141B0400362BEA /* AddScheduleViewController.h */,
 				A77B672819141B0400362BEA /* AddScheduleViewController.m */,
-				A7F42EDE19156AE4003E5908 /* BaseViewController.h */,
-				A7F42EDF19156AE4003E5908 /* BaseViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
