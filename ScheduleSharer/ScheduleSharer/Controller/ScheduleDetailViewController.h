@@ -17,7 +17,8 @@
 #import "Schedules+Management.h"
 #import "Events+Management.h"
 
-@interface ScheduleDetailViewController : BaseViewController
+@interface ScheduleDetailViewController : BaseViewController <UITableViewDataSource, UITableViewDelegate>
+
 
 @property (strong, nonatomic) EventDetailViewController *eventDetailVC;
 
