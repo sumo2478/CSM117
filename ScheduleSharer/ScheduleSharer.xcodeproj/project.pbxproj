@@ -39,6 +39,8 @@
 		A7A4D33E1926D77800B4536A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A4D33D1926D77800B4536A /* QuartzCore.framework */; };
 		A7A4D3401926D78600B4536A /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A4D33F1926D78600B4536A /* libiconv.dylib */; };
 		A7F42EE019156AE4003E5908 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A7F42EDF19156AE4003E5908 /* BaseViewController.m */; };
+		CE68F001193AD6F000B34FC8 /* ScheduleCatalogTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CE68EFFF193AD6F000B34FC8 /* ScheduleCatalogTableViewCell.m */; };
+		CE68F004193AE9E200B34FC8 /* ScheduleCatalogTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE68F003193AE9E200B34FC8 /* ScheduleCatalogTableViewCell.xib */; };
 		CEDEF7E41929FCB800019E93 /* EventDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDEF7DF1929FCB800019E93 /* EventDetailViewController.m */; };
 		CEDEF7E51929FCB800019E93 /* ScheduleCatalogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDEF7E11929FCB800019E93 /* ScheduleCatalogViewController.m */; };
 		CEDEF7E61929FCB800019E93 /* ScheduleDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CEDEF7E31929FCB800019E93 /* ScheduleDetailViewController.m */; };
@@ -105,6 +107,9 @@
 		A7F42EDE19156AE4003E5908 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseViewController.h; path = Controller/BaseViewController.h; sourceTree = "<group>"; };
 		A7F42EDF19156AE4003E5908 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseViewController.m; path = Controller/BaseViewController.m; sourceTree = "<group>"; };
 		B502BD9DF1914A309E934FDB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE68EFFE193AD6F000B34FC8 /* ScheduleCatalogTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleCatalogTableViewCell.h; sourceTree = "<group>"; };
+		CE68EFFF193AD6F000B34FC8 /* ScheduleCatalogTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleCatalogTableViewCell.m; sourceTree = "<group>"; };
+		CE68F003193AE9E200B34FC8 /* ScheduleCatalogTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleCatalogTableViewCell.xib; sourceTree = "<group>"; };
 		CEDEF7DE1929FCB800019E93 /* EventDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventDetailViewController.h; path = Controller/EventDetailViewController.h; sourceTree = "<group>"; };
 		CEDEF7DF1929FCB800019E93 /* EventDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventDetailViewController.m; path = Controller/EventDetailViewController.m; sourceTree = "<group>"; };
 		CEDEF7E01929FCB800019E93 /* ScheduleCatalogViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScheduleCatalogViewController.h; path = Controller/ScheduleCatalogViewController.h; sourceTree = "<group>"; };
@@ -258,6 +263,7 @@
 		A77B672419141A8000362BEA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CE68F003193AE9E200B34FC8 /* ScheduleCatalogTableViewCell.xib */,
 				CEDEF7E71929FCC800019E93 /* EventDetailViewController.xib */,
 				CEDEF7E81929FCC800019E93 /* ScheduleCatalogViewController.xib */,
 				CEDEF7E91929FCC800019E93 /* ScheduleDetailViewController.xib */,
@@ -272,6 +278,8 @@
 				A70630BD1938276900CB124D /* UtilityControllers */,
 				CEDEF7E01929FCB800019E93 /* ScheduleCatalogViewController.h */,
 				CEDEF7E11929FCB800019E93 /* ScheduleCatalogViewController.m */,
+				CE68EFFE193AD6F000B34FC8 /* ScheduleCatalogTableViewCell.h */,
+				CE68EFFF193AD6F000B34FC8 /* ScheduleCatalogTableViewCell.m */,
 				CEDEF7E21929FCB800019E93 /* ScheduleDetailViewController.h */,
 				CEDEF7E31929FCB800019E93 /* ScheduleDetailViewController.m */,
 				CEDEF7DE1929FCB800019E93 /* EventDetailViewController.h */,
@@ -400,6 +408,7 @@
 				CEDEF7EA1929FCC800019E93 /* EventDetailViewController.xib in Resources */,
 				CEDEF7EC1929FCC800019E93 /* ScheduleDetailViewController.xib in Resources */,
 				A77B672B19141B3E00362BEA /* AddScheduleView.xib in Resources */,
+				CE68F004193AE9E200B34FC8 /* ScheduleCatalogTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,6 +469,7 @@
 				CEDEF7E41929FCB800019E93 /* EventDetailViewController.m in Sources */,
 				CEDEF7E51929FCB800019E93 /* ScheduleCatalogViewController.m in Sources */,
 				CEDEF7E61929FCB800019E93 /* ScheduleDetailViewController.m in Sources */,
+				CE68F001193AD6F000B34FC8 /* ScheduleCatalogTableViewCell.m in Sources */,
 				A77B673A19148D1800362BEA /* DataModel.xcdatamodeld in Sources */,
 				A77B672E19141D8600362BEA /* ConnectionModel.m in Sources */,
 				A7678CE519159F1600A2D150 /* CalendarManagerModel.m in Sources */,

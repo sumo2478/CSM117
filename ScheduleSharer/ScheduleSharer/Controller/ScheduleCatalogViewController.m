@@ -7,7 +7,7 @@
 //
 
 #import "ScheduleCatalogViewController.h"
-
+#import "ScheduleCatalogTableViewCell.h"
 
 @interface ScheduleCatalogViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *scheduleCatalogTableView;
@@ -34,6 +34,10 @@
     // Return the number of sections.
     return 1;
 }
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 52; // edit this return value to your liking
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -44,20 +48,27 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"cellForRowAtIndexPath");
-    static NSString *cellIdentifier = @"SettingsCell";
+    static NSString *cellIdentifier = @"ScheduleCatalogCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    
-    //5.1 you do not need this if you have set SettingsCell as identifier in the storyboard (else you can remove the comments on this code)
-    if (cell == nil)
-    {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentifier];
+    ScheduleCatalogTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+  
+    if (!cell) {
+        [tableView registerNib:[UINib nibWithNibName:@"ScheduleCatalogTableViewCell" bundle:nil] forCellReuseIdentifier:@"ScheduleCatalogCell" ];
+        cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     }
-    
+
+   
     Schedules *schedule = [self.scheduleCatalogArray objectAtIndex:indexPath.row];
     
-    
+    [cell.scheduleTitle setText:schedule.title];
+    [cell.description setText:schedule.desc];
+    [cell.scheduleID setText:schedule.code];
+    if (![[Schedules syncTitle:schedule.is_synced]  isEqual: @"Sync"]) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    /*
     [cell.textLabel setText:schedule.title];
      
     //[cell.textLabel setText:[self.scheduleCatalogArray objectAtIndex:indexPath.row]];
@@ -68,14 +79,8 @@
         [eventsString appendString:event.title];
     }
     [cell.detailTextLabel setText:eventsString];
-    
-   /*
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeContactAdd];
-    [button addTarget:self action: @selector(addbuttonTapped:withEvent:) forControlEvents:UIControlEventTouchUpInside];
-    //button.tag = indexPath.row;
-    cell.accessoryView = button;
-    //cell.accessoryType = UITableViewCellAccessoryCheckmark;
     */
+  
     return cell;
 
 }
@@ -172,6 +177,8 @@
     self.title = @"My Schedules";
     self.scheduleCatalogTableView.dataSource = self;
     self.scheduleCatalogTableView.delegate = self;
+    
+    
     
     NSManagedObjectContext* context = [self managedObjectContext];
     NSError* error;
