@@ -96,6 +96,11 @@
     myEvents = [mySchedule.events allObjects];
     self.scheduleDetailTableView.dataSource = self;
     self.scheduleDetailTableView.delegate = self;
+    self.navigationItem.backBarButtonItem =
+    [[UIBarButtonItem alloc] initWithTitle:@"back"
+                                      style:UIBarButtonItemStyleBordered
+                                     target:nil
+                                     action:nil];
     if (!eventDetailVC) {
         eventDetailVC = [[EventDetailViewController alloc]initWithNibName:nil bundle:nil];
     }
@@ -109,7 +114,7 @@
     NSString* sync_title = [Schedules syncTitle:self.mySchedule.is_synced];
     UIBarButtonItem* sync_button = [[UIBarButtonItem alloc] initWithTitle:sync_title style:UIBarButtonItemStylePlain target:self action:@selector(schedule_sync:)];
     self.navigationItem.rightBarButtonItem = sync_button;
-    
+    self.title = mySchedule.title;
     myEvents = [mySchedule.events allObjects];
     [self.scheduleDetailTableView reloadData];
 }

@@ -41,6 +41,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.title = myEvent.title;
+    self.navigationItem.backBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"back"
+                                     style:UIBarButtonItemStyleBordered
+                                    target:nil
+                                    action:nil];
     //self.eventDetailTableView.dataSource = self;
     //self.eventDetailTableView.delegate = self;
     
@@ -53,6 +57,7 @@
     self.eventDescriptionLabel.text = @"Description:";
     
     NSString *description = myEvent.desc;
+    self.title = myEvent.title;
     if (description) {
         self.eventDescriptionTextField.text = description;
     }
