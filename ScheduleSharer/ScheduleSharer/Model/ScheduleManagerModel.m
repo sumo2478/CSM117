@@ -91,7 +91,7 @@
     // Initialize date formatter
     // TODO: Change to the appropriate timezone
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    [dateFormat setTimeZone:[NSTimeZone timeZoneWithName:@"PST"]];
     
     NSManagedObjectContext* context = [self managedObjectContext];
     

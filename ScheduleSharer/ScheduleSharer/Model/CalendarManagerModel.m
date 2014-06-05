@@ -58,7 +58,7 @@ static EKEventStore* eventStore = nil;
 {
     // Initialize Date formatter used to set date
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    [dateFormat setTimeZone:[NSTimeZone timeZoneWithName:@"PST"]];
     [dateFormat setDateFormat:API_SERVER_DATE_FORMAT];
     
     // Add in each event

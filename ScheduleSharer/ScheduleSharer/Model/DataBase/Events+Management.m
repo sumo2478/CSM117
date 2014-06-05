@@ -16,7 +16,7 @@
     Events* event = [NSEntityDescription insertNewObjectForEntityForName:MODEL_EVENT inManagedObjectContext:context];
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setTimeZone:[NSTimeZone timeZoneWithName:@"UTC"]];
+    [dateFormat setTimeZone:[NSTimeZone timeZoneWithName:@"PST"]];
     [dateFormat setDateFormat:API_SERVER_DATE_FORMAT];
     NSDate* start = [dateFormat dateFromString:start_time];
     NSDate* end   = [dateFormat dateFromString:end_time];
